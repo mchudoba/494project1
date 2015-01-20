@@ -33,56 +33,56 @@ public class Batman_Obj : PE_Obj
 		// Stop moving left
 		if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
 		{
-			this.vel.x = 0;
+			vel.x = 0;
 		}
 		// Stop moving right
 		if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
 		{
-			this.vel.x = 0;
+			vel.x = 0;
 		}
 		// Move left
 		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
-			this.vel.x = -h_speed;
-			this.dir1 = Direction.Left;
+			vel.x = -h_speed;
+			dir1 = Direction.Left;
 		}
 		// Move right
 		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
-			this.vel.x = h_speed;
-			this.dir1 = Direction.Right;
+			vel.x = h_speed;
+			dir1 = Direction.Right;
 		}
 	}
 	
 	void Duck()
 	{
-		Vector3 scale = this.transform.localScale;
+		Vector3 scale = transform.localScale;
 		
 		if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-		    && this.vel == Vector3.zero && !isDucked)
+		    && vel == Vector3.zero && !isDucked)
 		{
 			isDucked = true;
 			
 			scale.y *= duck;
-			this.transform.localScale = scale;
+			transform.localScale = scale;
 			
 			// Move location back to ground
-			Vector3 pos = this.transform.position;
+			Vector3 pos = transform.position;
 			pos.y -= duck / 2f;
-			this.transform.position = pos;
+			transform.position = pos;
 		}
 		if (((Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
-		     || this.vel != Vector3.zero) && isDucked)
+		     || vel != Vector3.zero) && isDucked)
 		{
 			isDucked = false;
 			
 			scale.y /= duck;
-			this.transform.localScale = scale;
+			transform.localScale = scale;
 			
 			// Move location back to ground
-			Vector3 pos = this.transform.position;
+			Vector3 pos = transform.position;
 			pos.y += duck / 2f;
-			this.transform.position = pos;
+			transform.position = pos;
 		}
 	}
 
@@ -93,7 +93,7 @@ public class Batman_Obj : PE_Obj
 			fist.renderer.enabled = true;
 			fist.collider.enabled = true;
 			attackTimer = attackTimerVal;
-			this.vel.x = 0;
+			vel.x = 0;
 		}
 		else if (attackTimer <= 0)
 		{
@@ -106,7 +106,12 @@ public class Batman_Obj : PE_Obj
 	{
 		if (other.tag == "Floor")
 		{
-			this.vel.y = 0;
+			vel.y = 0;
+		}
+
+		if (other.tag == "Wall")
+		{
+			vel.x = 0;
 		}
 	}
 	
