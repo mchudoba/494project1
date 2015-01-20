@@ -1,56 +1,57 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Batman_Obj : PE_Obj
+public class Batman_Obj : MonoBehaviour
 {
 
-	public GameObject	fist; // Reference to Batman's fist GameObject
-	public GameObject	frontCollider;
-	public GameObject	backCollider;
-	public GameObject	topCollider;
-	public GameObject	bottomCollider;
+	private PE_Obj		thisPeo;
 
+	public Vector3		vel; // Local velocity of Batman
+	public GameObject	fist; // Reference to Batman's fist GameObject
+	public float		jumpVel = 10f;
 	public float		h_speed = 6f; // Horizontal walking speed
 	public float		duck = 0.66f; // Percentage to shrink Batman to duck
+	public bool			grounded = false; // True if Batman is on the ground
 	public bool			isDucked = false; // True if Batman is currently ducking
 	public float		attackTimer; // Timer for running an attack animation
 	public float		attackTimerVal = 0.5f;
 
+	void Start ()
+	{
+		thisPeo = GetComponent<PE_Obj>();
+	}
+		
 	void Update()
 	{
+		grounded = (thisPeo.ground != null);
+
 		if (attackTimer > 0)
 			attackTimer -= Time.deltaTime;
 
 		if (attackTimer <= 0)
 			Move();
 
+		Jump();
 		Duck();
 		Punch();
+
+		thisPeo.vel = vel;
 	}
 
 	void Move()
 	{
-		// Stop moving left
-		if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
+		vel = thisPeo.vel;
+		float vX = Input.GetAxis("Horizontal");
+		vel.x = vX * h_speed;
+	}
+
+	void Jump()
+	{
+		float vY = Input.GetAxis("Jump");
+		if (grounded)
 		{
-			vel.x = 0;
-		}
-		// Stop moving right
-		if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
-		{
-			vel.x = 0;
-		}
-		// Move left
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-		{
-			vel.x = -h_speed;
-			dir1 = Direction.Left;
-		}
-		// Move right
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-		{
-			vel.x = h_speed;
-			dir1 = Direction.Right;
+			vel.y = vY * jumpVel;
+			thisPeo.ground = null; // Jumping will set ground = null
 		}
 	}
 	
@@ -59,10 +60,10 @@ public class Batman_Obj : PE_Obj
 		Vector3 scale = transform.localScale;
 		
 		if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-		    && vel == Vector3.zero && !isDucked)
+		    && thisPeo.vel == Vector3.zero && !isDucked)
 		{
 			isDucked = true;
-			
+
 			scale.y *= duck;
 			transform.localScale = scale;
 			
@@ -72,7 +73,7 @@ public class Batman_Obj : PE_Obj
 			transform.position = pos;
 		}
 		if (((Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
-		     || vel != Vector3.zero) && isDucked)
+		     || thisPeo.vel != Vector3.zero) && isDucked)
 		{
 			isDucked = false;
 			
@@ -101,18 +102,4 @@ public class Batman_Obj : PE_Obj
 			fist.collider.enabled = false;
 		}
 	}
-
-	public override void ResolveCollisionWith(PE_Obj other)
-	{
-		if (other.tag == "Floor")
-		{
-			vel.y = 0;
-		}
-
-		if (other.tag == "Wall")
-		{
-			vel.x = 0;
-		}
-	}
-	
 }
