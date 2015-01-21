@@ -36,7 +36,6 @@ public class PhysEngine : MonoBehaviour
 		foreach (PE_Obj current in objs)
 		{
 			current.transform.position = current.pos1;
-			ChangeDirection(current);
 		}
 	}
 
@@ -54,11 +53,7 @@ public class PhysEngine : MonoBehaviour
 		current.vel += tAcc * dt;
 
 		// Determine direction of current object
-		if (current.vel.x == 0 && current.vel.y == 0)
-		{
-			current.dir = PE_Dir.still;
-		}
-		else if (current.vel.x == 0)
+		if (current.vel.x == 0)
 		{
 			if (current.vel.y > 0)
 				current.dir = PE_Dir.up;
@@ -85,19 +80,6 @@ public class PhysEngine : MonoBehaviour
 		// Position
 		current.pos1 = current.pos0 = current.transform.position;
 		current.pos1 += current.vel * dt;
-	}
-
-	void ChangeDirection(PE_Obj current)
-	{
-		// If direction shouldn't change, return
-		if (current.dir0 == current.dir1) return;
-
-		if (current.dir0 == Direction.Left && current.dir1 == Direction.Right)
-			current.transform.Rotate(0, 180f, 0);
-		else if (current.dir0 == Direction.Right && current.dir1 == Direction.Left)
-			current.transform.Rotate(0, 180f, 0);
-
-		current.dir0 = current.dir1;
 	}
 
 }

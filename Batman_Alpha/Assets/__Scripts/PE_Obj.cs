@@ -1,13 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// Direction characters are facing
-public enum Direction
-{
-	Left,
-	Right
-}
-
 public class PE_Obj : MonoBehaviour
 {
 
@@ -18,10 +11,6 @@ public class PE_Obj : MonoBehaviour
 	public Vector3		pos1 = Vector3.zero;
 	public PE_Dir		dir = PE_Dir.still;
 	public PE_Obj		ground = null; // Stores whether this is on the ground
-
-	// old code
-	public Direction	dir0 = Direction.Right;
-	public Direction	dir1 = Direction.Right;
 
 	void Start()
 	{
@@ -75,14 +64,14 @@ public class PE_Obj : MonoBehaviour
 			a1.y -= transform.lossyScale.y/2f;
 			b = that.pos1;
 			b.y += that.transform.lossyScale.y/2f;
-			if (b.y > a1.y) {
+			if (b.y - a1.y > 0 &&  b.y - a1.y <= 0.5f)
+			{
 				posFinal.y += Mathf.Abs( a1.y - b.y );
+				vel.y = 0;
+
+				if (ground == null) ground = that;
+				transform.position = pos1 = posFinal;
 			}
-			// Handle vel
-			vel.y = 0;
-			
-			if (ground == null) ground = that;
-			transform.position = pos1 = posFinal;
 			return;
 		}
 		
@@ -92,13 +81,12 @@ public class PE_Obj : MonoBehaviour
 			a1.y += transform.lossyScale.y/2f;
 			b = that.pos1;
 			b.y -= that.transform.lossyScale.y/2f;
-			if (b.y < a1.y) {
+			if (b.y - a1.y < 0 && b.y - a1.y >= -0.5f)
+			{
 				posFinal.y -= Mathf.Abs( a1.y - b.y );
+				vel.y = 0;
+				transform.position = pos1 = posFinal;
 			}
-			// Handle vel
-			vel.y = 0;
-			
-			transform.position = pos1 = posFinal;
 			return;
 		}
 		

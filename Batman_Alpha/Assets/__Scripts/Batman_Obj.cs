@@ -43,6 +43,19 @@ public class Batman_Obj : MonoBehaviour
 		vel = thisPeo.vel;
 		float vX = Input.GetAxis("Horizontal");
 		vel.x = vX * h_speed;
+
+		// Change direction
+		Quaternion rot = transform.rotation;
+		if (vX > 0)
+		{
+			rot.y = 0;
+			transform.rotation = rot;
+		}
+		else if (vX < 0)
+		{
+			rot.y = 180f;
+			transform.rotation = rot;
+		}
 	}
 
 	void Jump()
