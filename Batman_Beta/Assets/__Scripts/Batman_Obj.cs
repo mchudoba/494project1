@@ -7,6 +7,7 @@ public class Batman_Obj : MonoBehaviour
 	private PE_Obj		thisPeo;
 
 	public Vector3		vel; // Local velocity of Batman
+	public Vector3		startScale; // Local scale of Batman
 	public GameObject	fist; // Reference to Batman's fist GameObject
 	public float		minJumpVel = 5f;
 	public float		maxJumpVel = 10f;
@@ -26,6 +27,7 @@ public class Batman_Obj : MonoBehaviour
 	void Start ()
 	{
 		thisPeo = GetComponent<PE_Obj>();
+		startScale = transform.localScale;
 	}
 		
 	void Update()
@@ -81,7 +83,7 @@ public class Batman_Obj : MonoBehaviour
 	void Jump()
 	{
 		if ((Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Period))
-		    && grounded)
+		    && grounded && jumpTimer <= 0)
 		{
 			xVelBeforeJump = vel.x;
 			vel.x = 0;
@@ -90,6 +92,9 @@ public class Batman_Obj : MonoBehaviour
 			atMaxJump = true;
 
 			Vector3 scale = transform.localScale;
+			if (scale.y != startScale.y)
+				return;
+
 			scale.y *= duck;
 			transform.localScale = scale;
 			
@@ -109,9 +114,7 @@ public class Batman_Obj : MonoBehaviour
 			atMaxJump = false;
 			isJumping = false;
 
-			Vector3 scale = transform.localScale;
-			scale.y /= duck;
-			transform.localScale = scale;
+			transform.localScale = startScale;
 			
 			// Move location back to ground
 			Vector3 pos = transform.position;
@@ -121,7 +124,7 @@ public class Batman_Obj : MonoBehaviour
 
 		if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.Period))
 		{
-			if (vel.y < maxJumpVel && !atMaxJump)
+			if (vel.y < maxJumpVel && !atMaxJump && vel.y != 0)
 			{
 				vel.y += jumpRateIncrease;
 			}
