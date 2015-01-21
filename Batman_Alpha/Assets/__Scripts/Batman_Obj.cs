@@ -23,6 +23,7 @@ public class Batman_Obj : MonoBehaviour
 		
 	void Update()
 	{
+		vel = thisPeo.vel;
 		grounded = (thisPeo.ground != null);
 
 		if (attackTimer > 0)
@@ -40,7 +41,6 @@ public class Batman_Obj : MonoBehaviour
 
 	void Move()
 	{
-		vel = thisPeo.vel;
 		float vX = Input.GetAxis("Horizontal");
 		vel.x = vX * h_speed;
 
@@ -107,7 +107,8 @@ public class Batman_Obj : MonoBehaviour
 			fist.renderer.enabled = true;
 			fist.collider.enabled = true;
 			attackTimer = attackTimerVal;
-			vel.x = 0;
+			if (grounded)
+				vel.x = 0;
 		}
 		else if (attackTimer <= 0)
 		{
