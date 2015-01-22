@@ -165,8 +165,7 @@ public class Batman_Obj : MonoBehaviour
 		{
 			isDucked = false;
 			
-			scale.y /= duck;
-			transform.localScale = scale;
+			transform.localScale = startScale;
 			
 			// Move location back to ground
 			Vector3 pos = transform.position;
