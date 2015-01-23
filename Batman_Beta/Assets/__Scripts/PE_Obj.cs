@@ -5,6 +5,7 @@ public class PE_Obj : MonoBehaviour
 {
 
 	public bool			still = false;
+	public float		closeEnough = 0.5f;
 	public Vector3		acc = Vector3.zero;
 	public Vector3		vel = Vector3.zero;
 	public Vector3		pos0 = Vector3.zero;
@@ -64,7 +65,7 @@ public class PE_Obj : MonoBehaviour
 			a1.y -= transform.lossyScale.y/2f;
 			b = that.pos1;
 			b.y += that.transform.lossyScale.y/2f;
-			if (b.y - a1.y > 0 &&  b.y - a1.y <= 0.5f)
+			if (b.y - a1.y > 0 &&  b.y - a1.y <= closeEnough)
 			{
 				posFinal.y += Mathf.Abs( a1.y - b.y );
 				vel.y = 0;
@@ -81,7 +82,7 @@ public class PE_Obj : MonoBehaviour
 			a1.y += transform.lossyScale.y/2f;
 			b = that.pos1;
 			b.y -= that.transform.lossyScale.y/2f;
-			if (b.y - a1.y < 0 && b.y - a1.y >= -0.5f)
+			if (b.y - a1.y < 0 && b.y - a1.y >= -closeEnough)
 			{
 				posFinal.y -= Mathf.Abs( a1.y - b.y );
 				vel.y = 0;

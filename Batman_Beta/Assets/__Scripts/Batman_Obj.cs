@@ -32,22 +32,23 @@ public class Batman_Obj : MonoBehaviour
 		
 	void Update()
 	{
+		float dt = Time.deltaTime;
 		vel = thisPeo.vel;
 		grounded = (thisPeo.ground != null);
 
 		if (attackTimer > 0)
-			attackTimer -= Time.deltaTime;
+			attackTimer -= dt;
 
 		if (attackTimer <= 0)
 			Move();
 
 		if (jumpTimer > 0)
 		{
-			jumpTimer -= Time.deltaTime;
+			jumpTimer -= dt;
 			vel.x = 0;
 		}
 
-		Jump();
+		Jump(dt);
 		Duck();
 		Punch();
 
@@ -59,7 +60,8 @@ public class Batman_Obj : MonoBehaviour
 		float vX = Input.GetAxis("Horizontal");
 
 		if (grounded || (vX * vel.x > 0 && xVelBeforeJump * vel.x >= 0)) vel.x = vX * h_speed;
-		else if (vX * vel.x < 0 && Mathf.Abs(vel.x) > 1f) {
+		else if (vX * vel.x < 0 && Mathf.Abs(vel.x) > 1f)
+		{
 			if(vel.x > 0) vel.x -= 0.15f;
 			else if (vel.x < 0) vel.x += 0.15f;
 		}
@@ -80,8 +82,9 @@ public class Batman_Obj : MonoBehaviour
 		}
 	}
 
-	void Jump()
+	void Jump(float dt)
 	{
+		// Start of jump; Batman crouches and stops moving in x direction
 		if ((Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Period))
 		    && grounded && jumpTimer <= 0)
 		{
@@ -106,6 +109,7 @@ public class Batman_Obj : MonoBehaviour
 			return;
 		}
 
+		// Batman jumps, setting an initial y velocity
 		if (grounded && jumpTimer <= 0 && isJumping)
 		{
 			vel.x = xVelBeforeJump;
@@ -122,11 +126,13 @@ public class Batman_Obj : MonoBehaviour
 			transform.position = pos;
 		}
 
+		// Batman keeps jumping as long as jump button is held
+		// There is a maximum y velocity that limits this
 		if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.Period))
 		{
 			if (vel.y < maxJumpVel && !atMaxJump && vel.y != 0)
 			{
-				vel.y += jumpRateIncrease;
+				vel.y += jumpRateIncrease * dt;
 			}
 			else
 			{
@@ -134,6 +140,7 @@ public class Batman_Obj : MonoBehaviour
 			}
 		}
 
+		// No longer jumping
 		if (Input.GetKeyUp(KeyCode.X) || Input.GetKeyUp(KeyCode.Period))
 		{
 			atMaxJump = true;
