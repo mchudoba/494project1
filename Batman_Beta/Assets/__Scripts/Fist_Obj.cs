@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Fist_Obj : MonoBehaviour
 {
-	public float			damage = 11f;
+	public int			damage = 10;
 	
 	void Start ()
 	{

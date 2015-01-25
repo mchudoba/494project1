@@ -50,8 +50,10 @@
      <Compile Include="Assets\__Scripts\Enemy_Obj.cs" />
      <Compile Include="Assets\__Scripts\Fist_Obj.cs" />
      <Compile Include="Assets\__Scripts\FollowCam.cs" />
+     <Compile Include="Assets\__Scripts\GameController.cs" />
      <Compile Include="Assets\__Scripts\PE_Obj.cs" />
      <Compile Include="Assets\__Scripts\PhysEngine.cs" />
+     <Compile Include="Assets\__Scripts\UIController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>

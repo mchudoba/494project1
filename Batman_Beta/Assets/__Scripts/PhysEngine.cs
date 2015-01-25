@@ -19,6 +19,7 @@ public class PhysEngine : MonoBehaviour
 	static public List<PE_Obj>	objs;
 
 	public Vector3		gravity = new Vector3(0, -9.8f, 0);
+	public float		destroyTime = 1f;
 
 	void Awake()
 	{
@@ -36,6 +37,22 @@ public class PhysEngine : MonoBehaviour
 		foreach (PE_Obj current in objs)
 		{
 			current.transform.position = current.pos1;
+		}
+
+		// Destroy any dead objects
+		for (int i = objs.Count - 1; i >= 0; i--)
+		{
+			// Destroy enemies with <=0 health
+			if (objs[i].tag == "Enemy")
+			{
+				Enemy_Obj kill = objs[i].GetComponent<Enemy_Obj>();
+				if (kill.health <= 0)
+				{
+					kill.gameObject.renderer.material.color = Color.red;
+					Destroy(kill.gameObject, destroyTime);
+					objs.RemoveAt(i);
+				}
+			}
 		}
 	}
 

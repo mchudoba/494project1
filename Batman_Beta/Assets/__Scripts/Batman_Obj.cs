@@ -5,7 +5,10 @@ public class Batman_Obj : MonoBehaviour
 {
 
 	private PE_Obj		thisPeo;
+	private Color		startColor;
+	private GameObject	body;
 
+	public int			health = 8;
 	public Vector3		vel; // Local velocity of Batman
 	public Vector3		startScale; // Local scale of Batman
 	public GameObject	fist; // Reference to Batman's fist GameObject
@@ -22,19 +25,31 @@ public class Batman_Obj : MonoBehaviour
 	public float		attackTimerVal = 0.5f;
 	public float		jumpTimer = 0;
 	public float		jumpTimerVal = 0.1f;
+	public float		takeDamageTimer = 0;
+	public float		takeDamageTimerVal = 1f;
 	public float		xVelBeforeJump = 0;
 
 	void Start ()
 	{
 		thisPeo = GetComponent<PE_Obj>();
+		body = GameObject.Find("Body");
 		startScale = transform.localScale;
+		startColor = body.renderer.material.color;
 	}
 		
 	void Update()
 	{
+		if (health <= 0)
+			GameController.GameOver();
+
 		float dt = Time.deltaTime;
 		vel = thisPeo.vel;
 		grounded = (thisPeo.ground != null);
+
+		if (takeDamageTimer > 0)
+			takeDamageTimer -= dt;
+		else
+			body.renderer.material.color = startColor;
 
 		if (attackTimer > 0)
 			attackTimer -= dt;
@@ -195,6 +210,17 @@ public class Batman_Obj : MonoBehaviour
 		{
 			fist.renderer.enabled = false;
 			fist.collider.enabled = false;
+		}
+	}
+
+	public void TakeDamage()
+	{
+		if (takeDamageTimer <= 0)
+		{
+			body.renderer.material.color = Color.red;
+			takeDamageTimer = takeDamageTimerVal;
+			if (health > 0)
+				health -= 1;
 		}
 	}
 }

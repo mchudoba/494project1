@@ -231,6 +231,8 @@ public class PE_Obj : MonoBehaviour
 	{
 		if (name == "Batman" && that.tag == "Enemy")
 		{
+			GetComponent<Batman_Obj>().TakeDamage();
+			that.GetComponent<Enemy_Obj>().TakeDamage(5);
 			return true;
 		}
 		else if (tag == "Enemy" && (that.name == "Batman" || that.tag == "Enemy"))
