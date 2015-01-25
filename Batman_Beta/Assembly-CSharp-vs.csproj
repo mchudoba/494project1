@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\__Scripts\Batman_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Enemy_Obj.cs" />
      <Compile Include="Assets\__Scripts\Fist_Obj.cs" />
      <Compile Include="Assets\__Scripts\FollowCam.cs" />
      <Compile Include="Assets\__Scripts\PE_Obj.cs" />

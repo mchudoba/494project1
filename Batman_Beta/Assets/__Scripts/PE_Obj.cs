@@ -26,13 +26,12 @@ public class PE_Obj : MonoBehaviour
 
 		PE_Obj otherObj = other.GetComponent<PE_Obj>();
 		if (otherObj == null) return;
-		
+
 		ResolveCollisionWith(otherObj);
 	}
 	
 	void OnTriggerStay(Collider other)
 	{
-		//return;
 		OnTriggerEnter(other);
 	}
 
@@ -52,6 +51,13 @@ public class PE_Obj : MonoBehaviour
 	
 	void ResolveCollisionWith(PE_Obj that)
 	{
+		// If Batman and and enemy collide, do not do any position resolution
+		// If 2 enemies collide, do not do any position resolution
+		if (IgnoreCollision(that))
+		{
+			return;
+		}
+
 		// Assumes that "that" is still
 		Vector3 posFinal = pos1; // Sets a default value for posFinal
 
@@ -144,7 +150,10 @@ public class PE_Obj : MonoBehaviour
 				posFinal.x -= Mathf.Abs(a1.x - b.x);
 				
 				// Handle vel
-				vel.x = 0;
+				if (name == "Batman")
+					vel.x = 0;
+				else if (tag == "Enemy")
+					vel.x *= -1f;
 				
 			} else { // hit the bottom
 				posFinal.y -= Mathf.Abs(a1.y - b.y);
@@ -160,7 +169,10 @@ public class PE_Obj : MonoBehaviour
 				posFinal.x -= Mathf.Abs(a1.x - b.x);
 				
 				// Handle vel
-				vel.x = 0;
+				if (name == "Batman")
+					vel.x = 0;
+				else if (tag == "Enemy")
+					vel.x *= -1f;
 				
 			} else { // hit the top
 				posFinal.y += Mathf.Abs(a1.y - b.y);
@@ -177,7 +189,10 @@ public class PE_Obj : MonoBehaviour
 				posFinal.x += Mathf.Abs(a1.x - b.x);
 				
 				// Handle vel
-				vel.x = 0;
+				if (name == "Batman")
+					vel.x = 0;
+				else if (tag == "Enemy")
+					vel.x *= -1f;
 				
 			} else { // hit the bottom
 				posFinal.y -= Mathf.Abs(a1.y - b.y);
@@ -193,7 +208,10 @@ public class PE_Obj : MonoBehaviour
 				posFinal.x += Mathf.Abs(a1.x - b.x);
 				
 				// Handle vel
-				vel.x = 0;
+				if (name == "Batman")
+					vel.x = 0;
+				else if (tag == "Enemy")
+					vel.x *= -1f;
 				
 			} else { // hit the top
 				posFinal.y += Mathf.Abs(b.y - a1.y);
@@ -207,6 +225,19 @@ public class PE_Obj : MonoBehaviour
 		}
 
 		this.transform.position = pos1 = posFinal;
+	}
+
+	bool IgnoreCollision(PE_Obj that)
+	{
+		if (name == "Batman" && that.tag == "Enemy")
+		{
+			return true;
+		}
+		else if (tag == "Enemy" && (that.name == "Batman" || that.tag == "Enemy"))
+		{
+			return true;
+		}
+		return false;
 	}
 
 }
