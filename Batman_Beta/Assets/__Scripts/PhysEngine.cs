@@ -26,6 +26,7 @@ public class PhysEngine : MonoBehaviour
 
 	public Vector3		gravity = new Vector3(0, -9.8f, 0);
 	public float		terminalVel = -15f;
+	public float		killTime = 0.5f;
 
 	void Awake()
 	{
@@ -55,7 +56,7 @@ public class PhysEngine : MonoBehaviour
 				if (kill.health <= 0)
 				{
 					kill.gameObject.renderer.material.color = Color.red;
-					Destroy(kill.gameObject);
+					Destroy(kill.gameObject, killTime);
 					objs.RemoveAt(i);
 				}
 			}

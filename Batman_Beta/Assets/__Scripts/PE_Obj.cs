@@ -95,7 +95,10 @@ public class PE_Obj : MonoBehaviour
 				transform.position = pos1 = posFinal;
 			}
 			else
-				GetComponent<Batman_Obj>().collidingWithWall = true;
+			{
+				if (name == "Batman")
+					GetComponent<Batman_Obj>().collidingWithWall = true;
+			}
 
 			return;
 		}
@@ -112,7 +115,10 @@ public class PE_Obj : MonoBehaviour
 				transform.position = pos1 = posFinal;
 			}
 			else
-				GetComponent<Batman_Obj>().collidingWithWall = true;
+			{
+				if (name == "Batman")
+					GetComponent<Batman_Obj>().collidingWithWall = true;
+			}
 
 			return;
 		}
@@ -279,6 +285,9 @@ public class PE_Obj : MonoBehaviour
 	{
 		if (name == "Batman" && that.tag == "Enemy")
 		{
+			if (that.GetComponent<Enemy_Obj>().health <= 0)
+				return true;
+
 			Batman_Obj batman = GetComponent<Batman_Obj>();
 			batman.TakeDamage();
 			if (facing == PE_Facing.left)

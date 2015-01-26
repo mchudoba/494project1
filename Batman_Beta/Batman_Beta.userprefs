@@ -1,8 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\__Scripts\PE_Obj.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\__Scripts\Enemy_Obj.cs">
     <Files>
-      <File FileName="Assets\__Scripts\PE_Obj.cs" Line="1" Column="1" />
+      <File FileName="Assets\__Scripts\dummy.cs" Line="11" Column="54" />
+      <File FileName="Assets\__Scripts\PE_Obj.cs" Line="116" Column="5" />
+      <File FileName="Assets\__Scripts\Enemy_Obj.cs" Line="57" Column="11" />
+      <File FileName="Assets\__Scripts\Batman_Obj.cs" Line="54" Column="21" />
+      <File FileName="Assets\__Scripts\PhysEngine.cs" Line="59" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

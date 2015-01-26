@@ -23,11 +23,11 @@ public class Enemy_Obj : MonoBehaviour
 		batmanObj = GameObject.Find("Batman");
 		startColor = gameObject.renderer.material.color;
 
-		if (name == "Marching Soldier")
+		if (name.Contains("Marching Soldier"))
 		{
 			thisPeo.vel.x = marchingSoldierSpeed;
 		}
-		else if (name == "Spike Robot")
+		else if (name.Contains("Spike Robot"))
 		{
 			thisPeo.vel.x = spikeRobotSpeed1;
 		}
@@ -53,6 +53,9 @@ public class Enemy_Obj : MonoBehaviour
 
 	void Update()
 	{
+		if (health <= 0)
+			return;
+
 		if (damageTimer > 0)
 			damageTimer -= Time.deltaTime;
 		else if (takingDamage == true)
@@ -63,7 +66,7 @@ public class Enemy_Obj : MonoBehaviour
 		}
 
 		// Spike robot speed is faster if on the same level as Batman
-		if (name == "Spike Robot")
+		if (name.Contains("Spike Robot"))
 		{
 			float batmanBot = batmanObj.transform.position.y;
 			float thisBot = transform.position.y;
@@ -88,15 +91,15 @@ public class Enemy_Obj : MonoBehaviour
 		}
 
 		// Gunman and flamethrower always face the direction of Batman
-		if (name == "Flamethrower" || name == "Gunman")
+		if (name.Contains("Flamethrower") || name.Contains("Gunman"))
 		{
 			float batmanX = batmanObj.transform.position.x;
 			float thisX = transform.position.x;
 
 			if (batmanX <= thisX)
-				thisPeo.dir = PE_Dir.downLeft;
+				thisPeo.facing = PE_Facing.left;
 			else
-				thisPeo.dir = PE_Dir.downRight;
+				thisPeo.facing = PE_Facing.right;
 		}
 
 		// If enemy leaves frame of view, destroy it

@@ -60,7 +60,10 @@ public class Batman_Obj : MonoBehaviour
 		if (takeDamageTimer > 0)
 			takeDamageTimer -= dt;
 		else
+		{
 			body.renderer.material.color = startColor;
+			fist.renderer.material.color = startColor;
+		}
 
 		if (attackTimer > 0)
 			attackTimer -= dt;
@@ -272,6 +275,7 @@ public class Batman_Obj : MonoBehaviour
 				thisPeo.vel.y = minJumpVel;
 
 			body.renderer.material.color = Color.red;
+			fist.renderer.material.color = Color.red;
 			takeDamageTimer = takeDamageTimerVal;
 			if (health > 0)
 				health -= 1;
