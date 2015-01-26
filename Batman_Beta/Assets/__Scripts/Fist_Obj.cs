@@ -11,4 +11,12 @@ public class Fist_Obj : MonoBehaviour
 		this.collider.enabled = false;
 	}
 
+	void OnTriggerEnter(Collider other)
+	{
+		Enemy_Obj enemy = other.GetComponent<Enemy_Obj>();
+		if (enemy == null) return;
+
+		enemy.TakeDamage(damage);
+	}
+
 }

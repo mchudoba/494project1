@@ -11,12 +11,17 @@ public class Batman_Obj : MonoBehaviour
 	public int			health = 8;
 	public Vector3		vel; // Local velocity of Batman
 	public Vector3		startScale; // Local scale of Batman
+	public Vector3		wallJumpVel = Vector3.zero;
 	public GameObject	fist; // Reference to Batman's fist GameObject
 	public float		minJumpVel = 5f;
 	public float		maxJumpVel = 10f;
 	public float		jumpRateIncrease = 0.1f;
 	public float		h_speed = 6f; // Horizontal walking speed
 	public float		duck = 0.66f; // Percentage to shrink Batman to duck
+	public bool			collidingWithWall = false;
+	public bool			wallOnLeft = true;
+	public bool			isWallJumping = false;
+	public bool			wallJumpTimerRunning = false;
 	public bool			atMaxJump = false;
 	public bool			isJumping = false;
 	public bool			grounded = false; // True if Batman is on the ground
@@ -25,9 +30,12 @@ public class Batman_Obj : MonoBehaviour
 	public float		attackTimerVal = 0.5f;
 	public float		jumpTimer = 0;
 	public float		jumpTimerVal = 0.1f;
+	public float		wallJumpTimer = 0;
+	public float		wallJumpTimerVal = 0.2f;
 	public float		takeDamageTimer = 0;
 	public float		takeDamageTimerVal = 1f;
 	public float		xVelBeforeJump = 0;
+	public float		knockbackVel = 8f;
 
 	void Start ()
 	{
@@ -46,6 +54,9 @@ public class Batman_Obj : MonoBehaviour
 		vel = thisPeo.vel;
 		grounded = (thisPeo.ground != null);
 
+		if (grounded)
+			isWallJumping = false;
+
 		if (takeDamageTimer > 0)
 			takeDamageTimer -= dt;
 		else
@@ -53,6 +64,20 @@ public class Batman_Obj : MonoBehaviour
 
 		if (attackTimer > 0)
 			attackTimer -= dt;
+
+		if (wallJumpTimer > 0)
+			wallJumpTimer -= dt;
+
+		// Check for a wall jump only if Batman is colliding with a wall and not on the ground
+		if (collidingWithWall && !grounded)
+			WallJump();
+
+		// If Batman is currently wall jumping, override all other controls
+		if (isWallJumping)
+		{
+			thisPeo.vel = vel;
+			return;
+		}
 
 		if (attackTimer <= 0)
 			Move();
@@ -83,17 +108,43 @@ public class Batman_Obj : MonoBehaviour
 		else if (Mathf.Abs(vel.x) > h_speed / 2f) vel.x /= 1.2f;
 		else if (xVelBeforeJump == 0) vel.x = vX * h_speed / 3f;
 
-		// Change direction
-		Quaternion rot = transform.rotation;
 		if (vX > 0)
-		{
-			rot.y = 0;
-			transform.rotation = rot;
-		}
+			thisPeo.facing = PE_Facing.right;
 		else if (vX < 0)
+			thisPeo.facing = PE_Facing.left;
+	}
+	
+	void WallJump()
+	{
+		if (wallJumpTimer > 0)
 		{
-			rot.y = 180f;
-			transform.rotation = rot;
+			wallJumpTimerRunning = true;
+			vel = Vector3.zero;
+		}
+		else if (wallJumpTimerRunning)
+		{
+			wallJumpTimerRunning = false;
+			vel = wallJumpVel;
+			if (thisPeo.facing == PE_Facing.right)
+			{
+				vel.x *= -1f;
+				thisPeo.facing = PE_Facing.left;
+			}
+			else
+				thisPeo.facing = PE_Facing.right;
+		}
+
+		if ((Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Period)) && collidingWithWall)
+		{
+			if (!wallOnLeft && thisPeo.facing == PE_Facing.left)
+				return;
+			else if (wallOnLeft && thisPeo.facing == PE_Facing.right)
+				return;
+			else if (wallJumpTimer > 0)
+				return;
+
+			wallJumpTimer = wallJumpTimerVal;
+			isWallJumping = true;
 		}
 	}
 
@@ -217,6 +268,9 @@ public class Batman_Obj : MonoBehaviour
 	{
 		if (takeDamageTimer <= 0)
 		{
+			if (grounded)
+				thisPeo.vel.y = minJumpVel;
+
 			body.renderer.material.color = Color.red;
 			takeDamageTimer = takeDamageTimerVal;
 			if (health > 0)

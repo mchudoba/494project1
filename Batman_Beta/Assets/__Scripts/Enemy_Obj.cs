@@ -7,6 +7,7 @@ public class Enemy_Obj : MonoBehaviour
 	private GameObject		batmanObj;
 	private Color			startColor;
 	private float			velBeforeDamage;
+	private bool			takingDamage = false;
 
 	public int				health = 0;
 	public float			closeEnough = 1f;
@@ -14,7 +15,7 @@ public class Enemy_Obj : MonoBehaviour
 	public float			spikeRobotSpeed1 = 4f;
 	public float			spikeRobotSpeed2 = 7f;
 	public float			damageTimer = 0;
-	public float			damageTimerVal = 1f;
+	public float			damageTimerVal = 0.5f;
 
 	void Start()
 	{
@@ -54,8 +55,12 @@ public class Enemy_Obj : MonoBehaviour
 	{
 		if (damageTimer > 0)
 			damageTimer -= Time.deltaTime;
-		else
+		else if (takingDamage == true)
+		{
+			takingDamage = false;
 			gameObject.renderer.material.color = startColor;
+			thisPeo.vel.x = velBeforeDamage;
+		}
 
 		// Spike robot speed is faster if on the same level as Batman
 		if (name == "Spike Robot")
@@ -68,16 +73,16 @@ public class Enemy_Obj : MonoBehaviour
 			// Batman and robot are on about the same level
 			if (Mathf.Abs(batmanBot - thisBot) <= closeEnough)
 			{
-				if (thisPeo.vel.x >= 0)
+				if (thisPeo.vel.x > 0)
 					thisPeo.vel.x = spikeRobotSpeed2;
-				else
+				else if (thisPeo.vel.x < 0)
 					thisPeo.vel.x = -spikeRobotSpeed2;
 			}
 			else
 			{
-				if (thisPeo.vel.x >= 0)
+				if (thisPeo.vel.x > 0)
 					thisPeo.vel.x = spikeRobotSpeed1;
-				else
+				else if (thisPeo.vel.x < 0)
 					thisPeo.vel.x = -spikeRobotSpeed1;
 			}
 		}
@@ -100,14 +105,12 @@ public class Enemy_Obj : MonoBehaviour
 
 	public void TakeDamage(int damage)
 	{
-		if (damageTimer <= 0)
-		{
-			velBeforeDamage = thisPeo.vel.x;
-			thisPeo.vel.x = 0;
-			gameObject.renderer.material.color = Color.red;
-			health -= damage;
-			damageTimer = damageTimerVal;
-		}
+		takingDamage = true;
+		velBeforeDamage = thisPeo.vel.x;
+		thisPeo.vel.x = 0;
+		gameObject.renderer.material.color = Color.red;
+		damageTimer = damageTimerVal;
+		health -= damage;
 	}
 
 }

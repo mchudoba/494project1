@@ -11,12 +11,25 @@ public class PE_Obj : MonoBehaviour
 	public Vector3		pos0 = Vector3.zero;
 	public Vector3		pos1 = Vector3.zero;
 	public PE_Dir		dir = PE_Dir.still;
+	public PE_Facing	facing = PE_Facing.right;
 	public PE_Obj		ground = null; // Stores whether this is on the ground
 
 	void Start()
 	{
 		if (PhysEngine.objs.IndexOf(this) == -1)
 			PhysEngine.objs.Add(this);
+	}
+
+	void Update()
+	{
+		Quaternion rot = transform.rotation;
+		if (facing == PE_Facing.right)
+			rot.y = 0;
+		else
+			rot.y = 180f;
+
+		transform.rotation = rot;
+
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -47,6 +60,9 @@ public class PE_Obj : MonoBehaviour
 		// Jumping will also set ground to null
 		if (ground == otherObj)
 			ground = null;
+
+		if (name == "Batman")
+			GetComponent<Batman_Obj>().collidingWithWall = false;
 	}
 	
 	void ResolveCollisionWith(PE_Obj that)
@@ -66,7 +82,6 @@ public class PE_Obj : MonoBehaviour
 		Vector3 delta = pos1 - pos0;
 		
 		if (dir == PE_Dir.down) {
-			// Just resolve to be on top
 			a1 = pos1;
 			a1.y -= transform.lossyScale.y/2f;
 			b = that.pos1;
@@ -79,11 +94,13 @@ public class PE_Obj : MonoBehaviour
 				if (ground == null) ground = that;
 				transform.position = pos1 = posFinal;
 			}
+			else
+				GetComponent<Batman_Obj>().collidingWithWall = true;
+
 			return;
 		}
 		
 		if (dir == PE_Dir.up) {
-			// Just resolve to be below
 			a1 = pos1;
 			a1.y += transform.lossyScale.y/2f;
 			b = that.pos1;
@@ -94,6 +111,9 @@ public class PE_Obj : MonoBehaviour
 				vel.y = 0;
 				transform.position = pos1 = posFinal;
 			}
+			else
+				GetComponent<Batman_Obj>().collidingWithWall = true;
+
 			return;
 		}
 		
@@ -151,9 +171,16 @@ public class PE_Obj : MonoBehaviour
 				
 				// Handle vel
 				if (name == "Batman")
+				{
 					vel.x = 0;
+					GetComponent<Batman_Obj>().collidingWithWall = true;
+					GetComponent<Batman_Obj>().wallOnLeft = false;
+				}
 				else if (tag == "Enemy")
+				{
 					vel.x *= -1f;
+					facing = PE_Facing.left;
+				}
 				
 			} else { // hit the bottom
 				posFinal.y -= Mathf.Abs(a1.y - b.y);
@@ -170,9 +197,16 @@ public class PE_Obj : MonoBehaviour
 				
 				// Handle vel
 				if (name == "Batman")
+				{
 					vel.x = 0;
+					GetComponent<Batman_Obj>().collidingWithWall = true;
+					GetComponent<Batman_Obj>().wallOnLeft = false;
+				}
 				else if (tag == "Enemy")
+				{
 					vel.x *= -1f;
+					facing = PE_Facing.left;
+				}
 				
 			} else { // hit the top
 				posFinal.y += Mathf.Abs(a1.y - b.y);
@@ -190,9 +224,16 @@ public class PE_Obj : MonoBehaviour
 				
 				// Handle vel
 				if (name == "Batman")
+				{
 					vel.x = 0;
+					GetComponent<Batman_Obj>().collidingWithWall = true;
+					GetComponent<Batman_Obj>().wallOnLeft = true;
+				}
 				else if (tag == "Enemy")
+				{
 					vel.x *= -1f;
+					facing = PE_Facing.right;
+				}
 				
 			} else { // hit the bottom
 				posFinal.y -= Mathf.Abs(a1.y - b.y);
@@ -209,9 +250,16 @@ public class PE_Obj : MonoBehaviour
 				
 				// Handle vel
 				if (name == "Batman")
+				{
 					vel.x = 0;
+					GetComponent<Batman_Obj>().collidingWithWall = true;
+					GetComponent<Batman_Obj>().wallOnLeft = true;
+				}
 				else if (tag == "Enemy")
+				{
 					vel.x *= -1f;
+					facing = PE_Facing.right;
+				};
 				
 			} else { // hit the top
 				posFinal.y += Mathf.Abs(b.y - a1.y);
@@ -231,8 +279,13 @@ public class PE_Obj : MonoBehaviour
 	{
 		if (name == "Batman" && that.tag == "Enemy")
 		{
-			GetComponent<Batman_Obj>().TakeDamage();
-			that.GetComponent<Enemy_Obj>().TakeDamage(5);
+			Batman_Obj batman = GetComponent<Batman_Obj>();
+			batman.TakeDamage();
+			if (facing == PE_Facing.left)
+				vel.x = batman.knockbackVel;
+			else
+				vel.x = -batman.knockbackVel;
+
 			return true;
 		}
 		else if (tag == "Enemy" && (that.name == "Batman" || that.tag == "Enemy"))

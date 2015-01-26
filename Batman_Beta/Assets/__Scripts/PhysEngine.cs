@@ -13,13 +13,18 @@ public enum PE_Dir // The direction in which the PE_Obj is moving
 	upLeft
 }
 
+public enum PE_Facing // The direction in which the PE_Obj is facing
+{
+	left,
+	right
+}
+
 public class PhysEngine : MonoBehaviour
 {
 
 	static public List<PE_Obj>	objs;
 
 	public Vector3		gravity = new Vector3(0, -9.8f, 0);
-	public float		destroyTime = 1f;
 
 	void Awake()
 	{
@@ -49,7 +54,7 @@ public class PhysEngine : MonoBehaviour
 				if (kill.health <= 0)
 				{
 					kill.gameObject.renderer.material.color = Color.red;
-					Destroy(kill.gameObject, destroyTime);
+					Destroy(kill.gameObject);
 					objs.RemoveAt(i);
 				}
 			}
