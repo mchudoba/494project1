@@ -3,9 +3,9 @@ using System.Collections;
 
 public class PE_Obj : MonoBehaviour
 {
+	private float		closeEnough = 0.5f;
 
 	public bool			still = false;
-	public float		closeEnough = 0.5f;
 	public Vector3		acc = Vector3.zero;
 	public Vector3		vel = Vector3.zero;
 	public Vector3		pos0 = Vector3.zero;

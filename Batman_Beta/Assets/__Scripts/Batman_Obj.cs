@@ -6,11 +6,12 @@ public class Batman_Obj : MonoBehaviour
 
 	private PE_Obj		thisPeo;
 	private Color		startColor;
+	private float		xVelBeforeJump = 0;
 	private GameObject	body;
+	private Vector3		vel; // Local velocity of Batman
+	private Vector3		startScale; // Local scale of Batman
 
 	public int			health = 8;
-	public Vector3		vel; // Local velocity of Batman
-	public Vector3		startScale; // Local scale of Batman
 	public Vector3		wallJumpVel = Vector3.zero;
 	public GameObject	fist; // Reference to Batman's fist GameObject
 	public float		minJumpVel = 5f;
@@ -34,7 +35,6 @@ public class Batman_Obj : MonoBehaviour
 	public float		wallJumpTimerVal = 0.2f;
 	public float		takeDamageTimer = 0;
 	public float		takeDamageTimerVal = 1f;
-	public float		xVelBeforeJump = 0;
 	public float		knockbackVel = 8f;
 
 	void Start ()

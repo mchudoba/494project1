@@ -25,6 +25,7 @@ public class PhysEngine : MonoBehaviour
 	static public List<PE_Obj>	objs;
 
 	public Vector3		gravity = new Vector3(0, -9.8f, 0);
+	public float		terminalVel = -15f;
 
 	void Awake()
 	{
@@ -72,7 +73,9 @@ public class PhysEngine : MonoBehaviour
 		// Velocity
 		Vector3 tAcc = current.acc;
 		tAcc += gravity;
-		current.vel += tAcc * dt;
+
+		if (current.vel.y + (tAcc.y * dt) > terminalVel)
+			current.vel += tAcc * dt;
 
 		// Determine direction of current object
 		if (current.vel.x == 0)

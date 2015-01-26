@@ -7,10 +7,10 @@ public class Enemy_Obj : MonoBehaviour
 	private GameObject		batmanObj;
 	private Color			startColor;
 	private float			velBeforeDamage;
+	private float			closeEnough = 1f;
 	private bool			takingDamage = false;
 
 	public int				health = 0;
-	public float			closeEnough = 1f;
 	public float			marchingSoldierSpeed = 7f;
 	public float			spikeRobotSpeed1 = 4f;
 	public float			spikeRobotSpeed2 = 7f;
