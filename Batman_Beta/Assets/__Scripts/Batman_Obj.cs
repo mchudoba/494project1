@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum Weapon
+{
+	fist,
+	batarang
+}
+
 public class Batman_Obj : MonoBehaviour
 {
 
@@ -12,8 +18,11 @@ public class Batman_Obj : MonoBehaviour
 	private Vector3		startScale; // Local scale of Batman
 
 	public int			health = 8;
+	public int			ammo = 0;
 	public Vector3		wallJumpVel = Vector3.zero;
 	public GameObject	fist; // Reference to Batman's fist GameObject
+	public GameObject	batarang;
+	public Weapon		weapon = Weapon.fist;
 	public float		minJumpVel = 5f;
 	public float		maxJumpVel = 10f;
 	public float		jumpRateIncrease = 0.1f;
@@ -49,6 +58,8 @@ public class Batman_Obj : MonoBehaviour
 	{
 		if (health <= 0)
 			GameController.GameOver();
+
+		ChangeWeapon();
 
 		float dt = Time.deltaTime;
 		vel = thisPeo.vel;
@@ -93,9 +104,25 @@ public class Batman_Obj : MonoBehaviour
 
 		Jump(dt);
 		Duck();
-		Punch();
+
+		if (weapon == Weapon.fist)
+			Punch();
+		else if (weapon == Weapon.batarang)
+			Batarang();
 
 		thisPeo.vel = vel;
+	}
+
+	void ChangeWeapon()
+	{
+		if (Input.GetKeyDown(KeyCode.Return))
+		{
+			if (ammo == 0)
+				return;
+
+			weapon++;
+			if ((int)weapon == 2) weapon = 0;
+		}
 	}
 
 	void Move()
@@ -264,6 +291,30 @@ public class Batman_Obj : MonoBehaviour
 		{
 			fist.renderer.enabled = false;
 			fist.collider.enabled = false;
+		}
+	}
+
+	void Batarang()
+	{
+		if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Comma))
+		{
+			if (Batarang_Obj.count >= 3)
+				return;
+
+			attackTimer = attackTimerVal;
+			if (grounded)
+				vel.x = 0;
+
+			Vector3 batarangPos = transform.position;
+			if (thisPeo.facing == PE_Facing.right)
+				batarangPos.x += 1f;
+			else
+				batarangPos.x -= 1f;
+
+			Instantiate(batarang, batarangPos, Quaternion.identity);
+			Batarang_Obj.count++;
+
+			ammo--;
 		}
 	}
 
