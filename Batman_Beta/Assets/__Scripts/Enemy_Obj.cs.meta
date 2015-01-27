@@ -2,7 +2,9 @@ fileFormatVersion: 2
 guid: 2e4bed0cb1ccd534d9d1b5aa44755d26
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - healthItem: {fileID: 113022, guid: b0d27989d72a1264aa099626d03addd4, type: 2}
+  - ammoItem: {fileID: 130820, guid: d7334dc164d8b2449810a664680f2d1f, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

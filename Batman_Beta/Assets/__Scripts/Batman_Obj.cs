@@ -28,6 +28,7 @@ public class Batman_Obj : MonoBehaviour
 	public float		jumpRateIncrease = 0.1f;
 	public float		h_speed = 6f; // Horizontal walking speed
 	public float		duck = 0.66f; // Percentage to shrink Batman to duck
+	public bool			GibsonMode = false; // GIBSON MODE: unlimited lives and ammo; invincible
 	public bool			collidingWithWall = false;
 	public bool			wallOnLeft = true;
 	public bool			isWallJumping = false;
@@ -56,6 +57,17 @@ public class Batman_Obj : MonoBehaviour
 		
 	void Update()
 	{
+		// Toggles Gibson Mode
+		// Allows unlimited health, unlimited ammo, and invincibility
+		if (Input.GetKeyDown(KeyCode.G))
+			GibsonMode = !GibsonMode;
+
+		if (GibsonMode)
+		{
+			ammo = 99;
+			health = 8;
+		}
+
 		if (health <= 0)
 			GameController.GameOver();
 
@@ -90,6 +102,13 @@ public class Batman_Obj : MonoBehaviour
 		if (isWallJumping)
 		{
 			thisPeo.vel = vel;
+
+			// Can still register attacks while wall jumping
+			if (weapon == Weapon.fist)
+				Punch();
+			else if (weapon == Weapon.batarang)
+				Batarang();
+
 			return;
 		}
 
@@ -281,6 +300,11 @@ public class Batman_Obj : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Comma))
 		{
+			// Disables renderer and collider before re-enabling to allow for spam-punching
+			// Otherwise, attackTimer would never reach 0 and spamming Punch would not deal any damage
+			fist.renderer.enabled = false;
+			fist.collider.enabled = false;
+
 			fist.renderer.enabled = true;
 			fist.collider.enabled = true;
 			attackTimer = attackTimerVal;
@@ -320,6 +344,9 @@ public class Batman_Obj : MonoBehaviour
 
 	public void TakeDamage()
 	{
+		if (GibsonMode)
+			return;
+
 		if (takeDamageTimer <= 0)
 		{
 			if (grounded)
@@ -331,5 +358,26 @@ public class Batman_Obj : MonoBehaviour
 			if (health > 0)
 				health -= 1;
 		}
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.tag != "Item")
+			return;
+
+		if (other.name.Contains("Health"))
+		{
+			if (health < 8)
+				health++;
+		}
+		else if (other.name.Contains("Ammo"))
+		{
+			if (ammo + 10 <= 99)
+				ammo += 10;
+			else
+				ammo = 99;
+		}
+
+		Destroy(other.gameObject);
 	}
 }

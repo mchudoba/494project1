@@ -9,7 +9,10 @@ public class Enemy_Obj : MonoBehaviour
 	private float			velBeforeDamage;
 	private float			closeEnough = 1f;
 	private bool			takingDamage = false;
+	private bool			killedByPlayer = false;
 
+	public GameObject		healthItem;
+	public GameObject		ammoItem;
 	public int				health = 0;
 	public float			marchingSoldierSpeed = 7f;
 	public float			spikeRobotSpeed1 = 4f;
@@ -114,6 +117,47 @@ public class Enemy_Obj : MonoBehaviour
 		gameObject.renderer.material.color = Color.red;
 		damageTimer = damageTimerVal;
 		health -= damage;
+
+		if (health <= 0)
+			killedByPlayer = true;
 	}
 
+	void OnBecameInvisible()
+	{
+		if (name.Contains("Flamethrower") || name.Contains("Gunman"))
+			return;
+
+		health = 0;
+		renderer.enabled = false;
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (!name.Contains("Spike Robot"))
+			return;
+		if (other.name != "SpikeRobotLimiter")
+			return;
+
+		thisPeo.vel.x *= -1f;
+		if (thisPeo.facing == PE_Facing.left)
+			thisPeo.facing = PE_Facing.right;
+		else
+			thisPeo.facing = PE_Facing.left;
+	}
+
+	void OnDestroy()
+	{
+		if (!killedByPlayer)
+			return;
+
+		int rand = Random.Range(1, 9);
+		if (rand >= 5 && rand <= 7)
+		{
+			Instantiate(ammoItem, new Vector3(transform.position.x, transform.position.y, -0.1f), Quaternion.identity);
+		}
+		else if (rand == 8)
+		{
+			Instantiate(healthItem, new Vector3(transform.position.x, transform.position.y, -0.1f), Quaternion.identity);
+		}
+	}
 }
