@@ -4,7 +4,10 @@ using System.Collections;
 public enum Weapon
 {
 	fist,
-	batarang
+	batarang,
+	missile,
+	shuriken,
+	freeze
 }
 
 public class Batman_Obj : MonoBehaviour
@@ -19,9 +22,13 @@ public class Batman_Obj : MonoBehaviour
 
 	public int			health = 8;
 	public int			ammo = 0;
+	public int			weaponct = 4; //change to access later weapons like freeze grenade
 	public Vector3		wallJumpVel = Vector3.zero;
 	public GameObject	fist; // Reference to Batman's fist GameObject
 	public GameObject	batarang;
+	public GameObject 	missile;
+	public GameObject	shuriken;
+	public GameObject 	freeze;
 	public Weapon		weapon = Weapon.fist;
 	public float		minJumpVel = 5f;
 	public float		maxJumpVel = 10f;
@@ -108,6 +115,12 @@ public class Batman_Obj : MonoBehaviour
 				Punch();
 			else if (weapon == Weapon.batarang)
 				Batarang();
+			else if (weapon == Weapon.missile)
+				Missile();
+			else if (weapon == Weapon.shuriken)
+				Shuriken();
+			else if (weapon == Weapon.freeze)
+				FGrenade();
 
 			return;
 		}
@@ -128,6 +141,12 @@ public class Batman_Obj : MonoBehaviour
 			Punch();
 		else if (weapon == Weapon.batarang)
 			Batarang();
+		else if (weapon == Weapon.missile)
+			Missile();
+		else if (weapon == Weapon.shuriken)
+			Shuriken();
+		else if (weapon == Weapon.freeze)
+			FGrenade();
 
 		thisPeo.vel = vel;
 	}
@@ -140,7 +159,7 @@ public class Batman_Obj : MonoBehaviour
 				return;
 
 			weapon++;
-			if ((int)weapon == 2) weapon = 0;
+			if ((int)weapon == weaponct) weapon = 0;
 		}
 	}
 
@@ -337,6 +356,74 @@ public class Batman_Obj : MonoBehaviour
 
 			Instantiate(batarang, batarangPos, Quaternion.identity);
 			Batarang_Obj.count++;
+
+			ammo--;
+		}
+	}
+
+	void Missile()
+	{
+		if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Comma))
+		{
+			if (Batarang_Obj.count >= 3)
+				return;
+			
+			attackTimer = attackTimerVal;
+			if (grounded)
+				vel.x = 0;
+			
+			Vector3 batarangPos = transform.position;
+			if (thisPeo.facing == PE_Facing.right)
+				batarangPos.x += 1f;
+			else
+				batarangPos.x -= 1f;
+			
+			Instantiate(batarang, batarangPos, Quaternion.identity);
+			Batarang_Obj.count++;
+			
+			ammo -= 2;
+		}
+	}
+
+	void Shuriken()
+	{
+		if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Comma))
+		{
+			if (Batarang_Obj.count >= 3)
+				return;
+			
+			attackTimer = attackTimerVal;
+			if (grounded)
+				vel.x = 0;
+			
+			Vector3 batarangPos = transform.position;
+			if (thisPeo.facing == PE_Facing.right)
+				batarangPos.x += 1f;
+			else
+				batarangPos.x -= 1f;
+			
+			Instantiate(batarang, batarangPos, Quaternion.identity);
+			Batarang_Obj.count++;
+			
+			ammo -= 3;
+		}
+	}
+
+	void FGrenade()
+	{
+		if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Comma))
+		{
+			attackTimer = attackTimerVal;
+			if (grounded)
+				vel.x = 0;
+			
+			Vector3 gPos = transform.position;
+			if (thisPeo.facing == PE_Facing.right)
+				gPos.x += 1f;
+			else
+				gPos.x -= 1f;
+			
+			Instantiate(freeze, gPos, Quaternion.identity);
 
 			ammo--;
 		}

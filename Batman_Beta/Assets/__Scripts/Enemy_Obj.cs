@@ -19,6 +19,8 @@ public class Enemy_Obj : MonoBehaviour
 	public float			spikeRobotSpeed2 = 7f;
 	public float			damageTimer = 0;
 	public float			damageTimerVal = 0.5f;
+	public float			freezeTimer = 0;
+	public float			freezeTimerVal = 5f;
 
 	void Start()
 	{
@@ -105,6 +107,18 @@ public class Enemy_Obj : MonoBehaviour
 				thisPeo.facing = PE_Facing.right;
 		}
 
+		//Frozen
+		if (freezeTimer > 0) {
+			thisPeo.vel.x = 0;
+			freezeTimer -= Time.deltaTime;
+			if(gameObject.renderer.material.color != Color.red)
+				gameObject.renderer.material.color = Color.cyan;
+		} else if (gameObject.renderer.material.color == Color.cyan)
+		{
+			gameObject.renderer.material.color = startColor;
+			Start();
+		}
+
 		// If enemy leaves frame of view, destroy it
 		return;
 	}
@@ -122,13 +136,20 @@ public class Enemy_Obj : MonoBehaviour
 			killedByPlayer = true;
 	}
 
+	public void Freeze(){
+		thisPeo.vel.x = 0;
+		freezeTimer = freezeTimerVal;
+	}
+
 	void OnBecameInvisible()
 	{
 		if (name.Contains("Flamethrower") || name.Contains("Gunman"))
 			return;
 
-		health = 0;
-		renderer.enabled = false;
+		if(freezeTimer <= 0){
+			health = 0;
+			renderer.enabled = false;
+		}
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -150,14 +171,18 @@ public class Enemy_Obj : MonoBehaviour
 		if (!killedByPlayer)
 			return;
 
-		int rand = Random.Range(1, 9);
-		if (rand >= 5 && rand <= 7)
+		int rand = Random.Range(1, 4);
+		if (rand == 1)
 		{
 			Instantiate(ammoItem, new Vector3(transform.position.x, transform.position.y, -0.1f), Quaternion.identity);
 		}
-		else if (rand == 8)
+		else if (rand == 2)
 		{
 			Instantiate(healthItem, new Vector3(transform.position.x, transform.position.y, -0.1f), Quaternion.identity);
+		}
+		else
+		{
+			//points
 		}
 	}
 }

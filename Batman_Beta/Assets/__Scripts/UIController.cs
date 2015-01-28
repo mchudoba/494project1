@@ -38,6 +38,12 @@ public class UIController : MonoBehaviour
 			ammoText.text = "BATMAN";
 		else if (batman.weapon == Weapon.batarang)
 			ammoText.text = "BATARANG: " + batman.ammo;
+		else if (batman.weapon == Weapon.missile)
+			ammoText.text = "MISSILE: " + batman.ammo;
+		else if (batman.weapon == Weapon.shuriken)
+			ammoText.text = "SHURIKEN: " + batman.ammo;
+		else if (batman.weapon == Weapon.freeze)
+			ammoText.text = "FREEZE GRENADE: " + batman.ammo;
 
 		if (batman.ammo <= 0)
 		{
