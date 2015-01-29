@@ -10,7 +10,8 @@ public class Button_Obj : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player" || other.tag == "Enemy") {
-			door.SetActive(false);
+			door.renderer.enabled = false;
+			door.collider.enabled = false;
 			gameObject.renderer.material.color = active;
 		}
 	}
@@ -21,7 +22,8 @@ public class Button_Obj : MonoBehaviour {
 
 	void OnTriggerExit(Collider other){
 		if (other.tag == "Player" || other.tag == "Enemy") {
-			door.SetActive(true);
+			door.renderer.enabled = true;
+			door.collider.enabled = true;
 			gameObject.renderer.material.color = inactive;
 		}
 	}

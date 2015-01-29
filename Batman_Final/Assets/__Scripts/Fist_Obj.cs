@@ -7,8 +7,8 @@ public class Fist_Obj : MonoBehaviour
 	
 	void Start ()
 	{
-		this.renderer.enabled = false;
-		this.collider.enabled = false;
+		renderer.enabled = false;
+		collider.enabled = false;
 	}
 
 	void OnTriggerEnter(Collider other)

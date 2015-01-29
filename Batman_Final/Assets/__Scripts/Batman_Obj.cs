@@ -188,6 +188,7 @@ public class Batman_Obj : MonoBehaviour
 		{
 			wallJumpTimerRunning = true;
 			vel = Vector3.zero;
+			vel.y = 0.75f;
 		}
 		else if (wallJumpTimerRunning)
 		{
