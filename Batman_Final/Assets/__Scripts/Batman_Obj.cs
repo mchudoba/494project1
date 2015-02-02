@@ -12,16 +12,13 @@ public enum Weapon
 
 public class Batman_Obj : MonoBehaviour
 {
-	private SpriteRenderer	standing;
-	private SpriteRenderer	crouching;
-	private SpriteRenderer	punching;
-	private SpriteRenderer	curSprite;
-	private PE_Obj			thisPeo;
-	private Color			startColor;
-	private float			xVelBeforeJump = 0;
-	private GameObject		body;
-	private Vector3			vel; // Local velocity of Batman
-	private Vector3			startScale; // Local scale of Batman
+
+	private PE_Obj		thisPeo;
+	private Color		startColor;
+	private float		xVelBeforeJump = 0;
+	private GameObject	body;
+	private Vector3		vel; // Local velocity of Batman
+	private Vector3		startScale; // Local scale of Batman
 
 	public int			health = 8;
 	public int			ammo = 0;
@@ -63,11 +60,6 @@ public class Batman_Obj : MonoBehaviour
 		body = GameObject.Find("Body");
 		startScale = transform.localScale;
 		startColor = body.renderer.material.color;
-
-		standing = GameObject.Find("Batman_Standing").GetComponent<SpriteRenderer>();
-		crouching = GameObject.Find("Batman_Crouching").GetComponent<SpriteRenderer>();
-		punching = GameObject.Find("Batman_Punching").GetComponent<SpriteRenderer>();
-		curSprite = standing;
 	}
 		
 	void Update()

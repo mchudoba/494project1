@@ -1,8 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\__Scripts\Batman_Obj.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/__Scripts/Gunman_Obj.cs">
     <Files>
-      <File FileName="Assets\__Scripts\Batman_Obj.cs" Line="159" Column="21" />
+      <File FileName="Assets/__Scripts/Flamethrower_Obj.cs" Line="19" Column="3" />
+      <File FileName="Assets/__Scripts/Flame_Obj.cs" Line="10" Column="37" />
+      <File FileName="Assets/__Scripts/Fist_Obj.cs" Line="11" Column="3" />
+      <File FileName="Assets/__Scripts/Bullet_Obj.cs" Line="8" Column="29" />
+      <File FileName="Assets/__Scripts/Gunman_Obj.cs" Line="42" Column="22" />
+      <File FileName="Assets/__Scripts/Missile_Obj.cs" Line="6" Column="1" />
+      <File FileName="Assets/__Scripts/Batman_Obj.cs" Line="369" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
