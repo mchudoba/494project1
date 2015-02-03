@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public enum Weapon
@@ -100,7 +100,7 @@ public class Batman_Obj : MonoBehaviour
 		else
 		{
 			animator.SetBool("BatmanGrounded", false);
-			if (vel.y <= 0)
+			if (vel.y < 0)
 				animator.SetBool("BatmanFalling", true);
 		}
 
@@ -207,12 +207,16 @@ public class Batman_Obj : MonoBehaviour
 	{
 		if (wallJumpTimer > 0)
 		{
+			animator.SetBool("BatmanWall", true);
+			//animator.SetBool("BatmanFalling", false);
 			wallJumpTimerRunning = true;
 			vel = Vector3.zero;
 			vel.y = 0.75f;
 		}
 		else if (wallJumpTimerRunning)
 		{
+			animator.SetBool("BatmanFalling", false);
+			animator.SetBool("BatmanWall", false);
 			wallJumpTimerRunning = false;
 			vel = wallJumpVel;
 			if (thisPeo.facing == PE_Facing.right)

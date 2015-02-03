@@ -105,7 +105,7 @@ public class PE_Obj : MonoBehaviour
 			}
 			else
 			{
-				if (name == "Batman")
+				if (name == "Batman" && that.tag != "Door")
 					GetComponent<Batman_Obj>().collidingWithWall = true;
 			}
 
@@ -125,7 +125,7 @@ public class PE_Obj : MonoBehaviour
 			}
 			else
 			{
-				if (name == "Batman")
+				if (name == "Batman" && that.tag != "Door")
 					GetComponent<Batman_Obj>().collidingWithWall = true;
 			}
 
@@ -188,8 +188,11 @@ public class PE_Obj : MonoBehaviour
 				if (name == "Batman")
 				{
 					vel.x = 0;
-					GetComponent<Batman_Obj>().collidingWithWall = true;
-					GetComponent<Batman_Obj>().wallOnLeft = false;
+					if (that.tag != "Door")
+					{
+						GetComponent<Batman_Obj>().collidingWithWall = true;
+						GetComponent<Batman_Obj>().wallOnLeft = false;
+					}
 				}
 				else if (tag == "Enemy")
 				{
@@ -214,8 +217,11 @@ public class PE_Obj : MonoBehaviour
 				if (name == "Batman")
 				{
 					vel.x = 0;
-					GetComponent<Batman_Obj>().collidingWithWall = true;
-					GetComponent<Batman_Obj>().wallOnLeft = false;
+					if (that.tag != "Door")
+					{
+						GetComponent<Batman_Obj>().collidingWithWall = true;
+						GetComponent<Batman_Obj>().wallOnLeft = false;
+					}
 				}
 				else if (tag == "Enemy")
 				{
@@ -241,8 +247,11 @@ public class PE_Obj : MonoBehaviour
 				if (name == "Batman")
 				{
 					vel.x = 0;
-					GetComponent<Batman_Obj>().collidingWithWall = true;
-					GetComponent<Batman_Obj>().wallOnLeft = true;
+					if (that.tag != "Door")
+					{
+						GetComponent<Batman_Obj>().collidingWithWall = true;
+						GetComponent<Batman_Obj>().wallOnLeft = true;
+					}
 				}
 				else if (tag == "Enemy")
 				{
@@ -267,8 +276,11 @@ public class PE_Obj : MonoBehaviour
 				if (name == "Batman")
 				{
 					vel.x = 0;
-					GetComponent<Batman_Obj>().collidingWithWall = true;
-					GetComponent<Batman_Obj>().wallOnLeft = true;
+					if (that.tag != "Door")
+					{
+						GetComponent<Batman_Obj>().collidingWithWall = true;
+						GetComponent<Batman_Obj>().wallOnLeft = true;
+					}
 				}
 				else if (tag == "Enemy")
 				{
