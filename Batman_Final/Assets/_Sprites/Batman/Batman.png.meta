@@ -1,0 +1,751 @@
+fileFormatVersion: 2
+guid: d4fb71f9ce661c044a24576827d4e2ac
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Batman_Idle_3
+    21300002: Batman_Idle_2
+    21300004: Batman_Idle_1
+    21300006: Batman_Idle_0
+    21300008: Batman_Crouch_0
+    21300010: Batman_Walk_0
+    21300012: Batman_Walk_1
+    21300014: Batman_Walk_2
+    21300016: Batman_Walk_3
+    21300018: Batman_Walk_4
+    21300020: Batman_Walk_5
+    21300022: Batman_Walk_6
+    21300024: Batman_Wall_0
+    21300026: Batman_Wall_1
+    21300028: Batman_Wall_2
+    21300030: Batman_Jump_0
+    21300032: Batman_Jump_1
+    21300034: Batman_Jump_2
+    21300036: Batman_Jump_3
+    21300038: Batman_Jump_4
+    21300040: Batman_Punch_0
+    21300042: Batman_Punch_1
+    21300044: Batman_Punch_2
+    21300046: Batman_Punch_3
+    21300048: Batman_Crouch_Punch_0
+    21300050: Batman_Crouch_Punch_1
+    21300052: Batman_Crouch_Punch_2
+    21300054: Batman_Crouch_Punch_3
+    21300056: Batman_Dead_1
+    21300058: Batman_Dead_2
+    21300060: Batman_Dead_3
+    21300062: Batman_Dead_4
+    21300064: Batman_Air_Punch_0
+    21300066: Batman_Air_Punch_1
+    21300068: Batman_Air_Punch_2
+    21300070: Batman_Air_Punch_3
+    21300072: Batman_Dead_0
+    21300074: Batman_Shoot_0
+    21300076: Batman_Shoot_1
+    21300078: Batman_Shoot_2
+    21300080: Batman_Shoot_3
+    21300082: Batman_Throw_0
+    21300084: Batman_Throw_1
+    21300086: Batman_Throw_2
+    21300088: Batman_Throw_3
+    21300090: Batman_Throw_4
+    21300092: Batman_Crouch_Shoot_0
+    21300094: Batman_Crouch_Shoot_1
+    21300096: Batman_Crouch_Shoot_2
+    21300098: Batman_Crouch_Shoot_3
+    21300100: Batman_Crouch_Throw_0
+    21300102: Batman_Crouch_Throw_1
+    21300104: Batman_Crouch_Throw_2
+    21300106: Batman_Crouch_Throw_3
+    21300108: Batman_Crouch_Throw_4
+    21300110: Batman_Air_Shoot_0
+    21300112: Batman_Air_Shoot_1
+    21300114: Batman_Air_Shoot_2
+    21300116: Batman_Air_Shoot_3
+    21300118: Batman_Air_Throw_0
+    21300120: Batman_Air_Throw_1
+    21300122: Batman_Air_Throw_2
+    21300124: Batman_Air_Throw_3
+    21300126: Batman_Air_Throw_4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Batman_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 354
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 354
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Idle_1
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 354
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Idle_0
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 354
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_0
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 354
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Walk_0
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 354
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Walk_1
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 313
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Walk_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 313
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Walk_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 313
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Walk_4
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 313
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Walk_5
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 313
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Walk_6
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 313
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Wall_0
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 313
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Wall_1
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 313
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Wall_2
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 314
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Jump_0
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 269
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Jump_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 269
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Jump_2
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 269
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Jump_3
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 269
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Jump_4
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 269
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Punch_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 231
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Punch_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 231
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Punch_2
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 230
+        width: 28
+        height: 32
+      alignment: 9
+      pivot: {x: .400000006, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Punch_3
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 230
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Punch_0
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 194
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Punch_1
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 194
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Punch_2
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 193
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Punch_3
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 193
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Dead_1
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 152
+        width: 31
+        height: 56
+      alignment: 9
+      pivot: {x: .5, y: .275000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Dead_2
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 152
+        width: 32
+        height: 56
+      alignment: 9
+      pivot: {x: .5, y: .275000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Dead_3
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 152
+        width: 32
+        height: 56
+      alignment: 9
+      pivot: {x: .5, y: .275000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Dead_4
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 152
+        width: 32
+        height: 56
+      alignment: 9
+      pivot: {x: .5, y: .275000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Punch_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 149
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Punch_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 151
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Punch_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 150
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Punch_3
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 148
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Dead_0
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 152
+        width: 29
+        height: 56
+      alignment: 9
+      pivot: {x: .5, y: .275000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Shoot_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 103
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Shoot_1
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 103
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Shoot_2
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 103
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Shoot_3
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 103
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Throw_0
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 102
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Throw_1
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 102
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Throw_2
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 102
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Throw_3
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 102
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Throw_4
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 102
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Shoot_0
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 64
+        width: 32
+        height: 23
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Shoot_1
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 64
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Shoot_2
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 64
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Shoot_3
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 64
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Throw_0
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 63
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Throw_1
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 63
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Throw_2
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 63
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Throw_3
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 63
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Crouch_Throw_4
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 63
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Shoot_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 19
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Shoot_1
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 19
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Shoot_2
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 19
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Shoot_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 18
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Throw_0
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 18
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Throw_1
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 18
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Throw_2
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 19
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Throw_3
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 19
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Batman_Air_Throw_4
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 17
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

@@ -1,0 +1,179 @@
+fileFormatVersion: 2
+guid: 748658b70eef59440acf4a6778ef8e3f
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Spike Robot_0
+    21300002: Spike Robot_1
+    21300004: Spike Robot_2
+    21300006: Spike Robot_3
+    21300008: Spike Robot_4
+    21300010: Spike Robot_5
+    21300012: Spike Robot_6
+    21300014: Spike Robot_7
+    21300016: Spike Robot_8
+    21300018: Spike Robot_9
+    21300020: Spike Robot_10
+    21300022: Spike Robot_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Spike Robot_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spike Robot_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spike Robot_2
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spike Robot_3
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spike Robot_4
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spike Robot_5
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spike Robot_6
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spike Robot_7
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spike Robot_8
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spike Robot_9
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spike Robot_10
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spike Robot_11
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

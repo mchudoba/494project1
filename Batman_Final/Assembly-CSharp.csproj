@@ -46,26 +46,26 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\__Scripts\Batarang_Obj.cs" />
-     <Compile Include="Assets\__Scripts\Batman_Obj.cs" />
-     <Compile Include="Assets\__Scripts\Bullet_Obj.cs" />
-     <Compile Include="Assets\__Scripts\Button_Obj.cs" />
-     <Compile Include="Assets\__Scripts\Enemy_Obj.cs" />
-     <Compile Include="Assets\__Scripts\Fist_Obj.cs" />
-     <Compile Include="Assets\__Scripts\Flame_Obj.cs" />
-     <Compile Include="Assets\__Scripts\Flamethrower_Obj.cs" />
-     <Compile Include="Assets\__Scripts\FollowCam.cs" />
-     <Compile Include="Assets\__Scripts\Freeze_Grenade_Obj.cs" />
-     <Compile Include="Assets\__Scripts\GameController.cs" />
-     <Compile Include="Assets\__Scripts\Gunman_Obj.cs" />
-     <Compile Include="Assets\__Scripts\Item_Obj.cs" />
-     <Compile Include="Assets\__Scripts\Missile_Obj.cs" />
-     <Compile Include="Assets\__Scripts\OpenLevel.cs" />
-     <Compile Include="Assets\__Scripts\PE_Obj.cs" />
-     <Compile Include="Assets\__Scripts\PhysEngine.cs" />
-     <Compile Include="Assets\__Scripts\Shuriken_Obj.cs" />
-     <Compile Include="Assets\__Scripts\SpawnPoint.cs" />
-     <Compile Include="Assets\__Scripts\UIController.cs" />
+     <Compile Include="Assets\__Scripts\Controllers\Batman_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Controllers\FollowCam.cs" />
+     <Compile Include="Assets\__Scripts\Controllers\GameController.cs" />
+     <Compile Include="Assets\__Scripts\Controllers\OpenLevel.cs" />
+     <Compile Include="Assets\__Scripts\Controllers\SpawnPoint.cs" />
+     <Compile Include="Assets\__Scripts\Controllers\UIController.cs" />
+     <Compile Include="Assets\__Scripts\Enemies\Enemy_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Enemies\Flamethrower_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Enemies\Gunman_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Items\Button_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Items\Item_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Physics\PE_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Physics\PhysEngine.cs" />
+     <Compile Include="Assets\__Scripts\Projectiles\Batarang_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Projectiles\Bullet_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Projectiles\Fist_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Projectiles\Flame_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Projectiles\Freeze_Grenade_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Projectiles\Missile_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Projectiles\Shuriken_Obj.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
