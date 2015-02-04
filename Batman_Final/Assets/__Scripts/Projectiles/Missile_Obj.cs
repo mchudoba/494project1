@@ -33,7 +33,7 @@ public class Missile_Obj : MonoBehaviour
 			enemy.TakeDamage(damage);
 		}
 
-		if(other.tag != "Item" && other.name != "SpikeRobotLimiter"){
+		if(other.tag != "Item" && other.name != "Limiter" && other.name != "Flame"){
 			count--;
 			Destroy(this.gameObject);
 		}

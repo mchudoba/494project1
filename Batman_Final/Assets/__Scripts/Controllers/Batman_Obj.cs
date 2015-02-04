@@ -79,6 +79,9 @@ public class Batman_Obj : MonoBehaviour
 		
 	void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+			Application.LoadLevel("_Main_Menu");
+
 		if (sliding)
 			return;
 
@@ -187,8 +190,17 @@ public class Batman_Obj : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
-			if (ammo == 0)
+			if (ammo == 0 && weaponct == 4)
 				return;
+
+			if (ammo == 0)
+			{
+				if (weapon == Weapon.fist)
+					weapon = Weapon.freeze;
+				else
+					weapon = Weapon.fist;
+				return;
+			}
 
 			weapon++;
 			if ((int)weapon == weaponct) weapon = 0;
@@ -495,8 +507,6 @@ public class Batman_Obj : MonoBehaviour
 				gPos.x -= 1f;
 			
 			Instantiate(freeze, gPos, Quaternion.identity);
-
-			ammo--;
 		}
 	}
 
@@ -520,6 +530,9 @@ public class Batman_Obj : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
+		if (other.name == "Exit_Trigger")
+			GameController.LevelEnd();
+
 		if (other.name == "IceSlope")
 		{
 			Vector3 scale = transform.localScale;

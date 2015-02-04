@@ -57,6 +57,7 @@
      <Compile Include="Assets\__Scripts\Enemies\Gunman_Obj.cs" />
      <Compile Include="Assets\__Scripts\Items\Button_Obj.cs" />
      <Compile Include="Assets\__Scripts\Items\Door_Obj.cs" />
+     <Compile Include="Assets\__Scripts\Items\GrenadeBox_Obj.cs" />
      <Compile Include="Assets\__Scripts\Items\Item_Obj.cs" />
      <Compile Include="Assets\__Scripts\Physics\PE_Obj.cs" />
      <Compile Include="Assets\__Scripts\Physics\PhysEngine.cs" />

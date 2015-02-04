@@ -98,6 +98,12 @@ public class Gunman_Obj : MonoBehaviour
 		{
 			newBullet.GetComponent<Bullet_Obj>().xSpeed *= -1f;
 		}
+		else
+		{
+			Quaternion rot = newBullet.transform.rotation;
+			rot.z = 180f;
+			newBullet.transform.rotation = rot;
+		}
 	}
 
 	void Duck()

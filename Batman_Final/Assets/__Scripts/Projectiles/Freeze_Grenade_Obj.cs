@@ -30,6 +30,9 @@ public class Freeze_Grenade_Obj : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
+		if (other.name == "Limiter" || other.tag == "Item")
+			return;
+
 		if (other.tag == "Enemy")
 		{
 			Enemy_Obj enemy = other.GetComponent<Enemy_Obj>();

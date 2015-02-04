@@ -43,12 +43,13 @@ public class UIController : MonoBehaviour
 		else if (batman.weapon == Weapon.shuriken)
 			ammoText.text = "SHURIKEN: " + batman.ammo;
 		else if (batman.weapon == Weapon.freeze)
-			ammoText.text = "FREEZE GRENADE: " + batman.ammo;
+			ammoText.text = "FREEZE GRENADE";
 
 		if (batman.ammo <= 0)
 		{
 			ammoText.color = purple;
-			batman.weapon = Weapon.fist;
+			if (batman.weapon != Weapon.fist && batman.weapon != Weapon.freeze)
+				batman.weapon = Weapon.fist;
 		}
 		else
 			ammoText.color = orange;

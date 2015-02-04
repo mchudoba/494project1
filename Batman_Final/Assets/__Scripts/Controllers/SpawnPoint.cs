@@ -5,9 +5,7 @@ public class SpawnPoint : MonoBehaviour
 {
 	private GameObject		enemy;
 	private GameObject		batman;
-	public float			respawnTimer = 0;
-	private bool			cameraSpawn = true;
-	private bool			spawnNow = false;
+	private float			respawnTimer = 0;
 
 	public GameObject		enemyType;
 	public float			respawnTimerVal = 2f;
@@ -22,13 +20,6 @@ public class SpawnPoint : MonoBehaviour
 	{
 		GetComponent<TextMesh>().text = "";
 		batman = GameObject.Find("Batman");
-
-		// If the current level is the custom level, do not spawn enemies
-		// based on the camera vision
-		//if (Application.loadedLevelName == "_Custom_Level")
-		//{
-		//	cameraSpawn = false;
-		//}
 	}
 
 	void OnBecameVisible()
