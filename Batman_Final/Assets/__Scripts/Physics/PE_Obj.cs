@@ -311,6 +311,8 @@ public class PE_Obj : MonoBehaviour
 		{
 			if (that.GetComponent<Enemy_Obj>().health <= 0)
 				return true;
+			if (that.GetComponent<Enemy_Obj>().freezeTimer > 0)
+				return true;
 
 			Batman_Obj batman = GetComponent<Batman_Obj>();
 			batman.TakeDamage();

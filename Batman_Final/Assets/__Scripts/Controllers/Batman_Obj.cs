@@ -422,9 +422,6 @@ public class Batman_Obj : MonoBehaviour
 			if (Batarang_Obj.count >= 3)
 				return;
 
-			animator.SetBool("BatmanWalking", false);
-			animator.Play("Batman_Throw", -1, 0f);
-
 			attackTimer = attackTimerVal;
 			if (grounded)
 				vel.x = 0;
@@ -439,6 +436,10 @@ public class Batman_Obj : MonoBehaviour
 			Batarang_Obj.count++;
 
 			ammo--;
+
+			// Animate the throw
+			animator.SetBool("BatmanWalking", false);
+			animator.Play("Batman_Throw", -1, 0f);
 		}
 	}
 
@@ -509,6 +510,10 @@ public class Batman_Obj : MonoBehaviour
 				gPos.x -= 1f;
 			
 			Instantiate(freeze, gPos, Quaternion.identity);
+
+			// Animate the throw
+			animator.SetBool("BatmanWalking", false);
+			animator.Play("Batman_Throw", -1, 0f);
 		}
 	}
 
