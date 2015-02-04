@@ -10,6 +10,7 @@ public class OpenLevel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Time.timeScale = 1f;
 		if (Input.GetKey(KeyCode.Alpha1)) {
 			Application.LoadLevel("_Classic_Level");
 		}
