@@ -403,7 +403,7 @@ public class Batman_Obj : MonoBehaviour
 			fist.collider.enabled = false;
 
 			animator.SetBool("BatmanWalking", false);
-			animator.SetBool("BatmanPunching", true);
+			animator.Play("Batman_Punch", -1, 0f);
 			fist.collider.enabled = true;
 			attackTimer = attackTimerVal;
 			if (grounded)
@@ -411,7 +411,6 @@ public class Batman_Obj : MonoBehaviour
 		}
 		else if (attackTimer <= 0)
 		{
-			animator.SetBool("BatmanPunching", false);
 			fist.collider.enabled = false;
 		}
 	}
@@ -422,6 +421,9 @@ public class Batman_Obj : MonoBehaviour
 		{
 			if (Batarang_Obj.count >= 3)
 				return;
+
+			animator.SetBool("BatmanWalking", false);
+			animator.Play("Batman_Throw", -1, 0f);
 
 			attackTimer = attackTimerVal;
 			if (grounded)

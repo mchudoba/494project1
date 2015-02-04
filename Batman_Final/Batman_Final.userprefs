@@ -1,14 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/__Scripts/Items/GrenadeBox_Obj.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/__Scripts/Controllers/Batman_Obj.cs">
     <Files>
-      <File FileName="Assets/__Scripts/Controllers/Batman_Obj.cs" Line="198" Column="31" />
-      <File FileName="Assets/__Scripts/Controllers/GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets/__Scripts/Controllers/SpawnPoint.cs" Line="1" Column="1" />
-      <File FileName="Assets/__Scripts/Controllers/UIController.cs" Line="52" Column="5" />
-      <File FileName="Assets/__Scripts/Projectiles/Freeze_Grenade_Obj.cs" Line="1" Column="1" />
-      <File FileName="Assets/__Scripts/Projectiles/Missile_Obj.cs" Line="1" Column="1" />
-      <File FileName="Assets/__Scripts/Items/GrenadeBox_Obj.cs" Line="29" Column="29" />
+      <File FileName="Assets/__Scripts/Controllers/Batman_Obj.cs" Line="406" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
