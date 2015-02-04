@@ -20,6 +20,7 @@ public class Batman_Obj : MonoBehaviour
 	private Vector3			startScale; // Local scale of Batman
 	private Vector3			bodyStartScale;
 	private Animator		animator;
+	private bool			sliding = false;
 
 	public int			health = 8;
 	public int			ammo = 0;
@@ -64,9 +65,23 @@ public class Batman_Obj : MonoBehaviour
 		startColor = body.renderer.material.color;
 		animator = body.GetComponent<Animator>();
 	}
+
+	void FixedUpdate()
+	{
+		if (sliding)
+		{
+			Vector3 pos = transform.position;
+			pos.x += 12f * Time.fixedDeltaTime;
+			pos.y -= 12f * Time.fixedDeltaTime;
+			transform.position = pos;
+		}
+	}
 		
 	void Update()
 	{
+		if (sliding)
+			return;
+
 		// Toggles Gibson Mode
 		// Allows unlimited health, unlimited ammo, and invincibility
 		if (Input.GetKeyDown(KeyCode.G))
@@ -505,6 +520,33 @@ public class Batman_Obj : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
+		if (other.name == "IceSlope")
+		{
+			Vector3 scale = transform.localScale;
+			Vector3 spriteScale = body.transform.localScale;
+
+			animator.SetBool("BatmanSliding", true);
+			isDucked = true;
+			
+			scale.y *= duck;
+			spriteScale.y /= duck;
+			transform.localScale = scale;
+			body.transform.localScale = spriteScale;
+			
+			// Move location back to ground
+			Vector3 pos = transform.position;
+			Vector3 spritePos = body.transform.localPosition;
+			pos.y -= duck / 2f;
+			spritePos.y = 0.25f;
+			transform.position = pos;
+			body.transform.localPosition = spritePos;
+
+			sliding = true;
+			thisPeo.facing = PE_Facing.right;
+			thisPeo.still = true;
+			return;
+		}
+
 		if (other.tag != "Item")
 			return;
 
@@ -522,5 +564,28 @@ public class Batman_Obj : MonoBehaviour
 		}
 
 		Destroy(other.gameObject);
+	}
+
+	void OnTriggerExit(Collider other)
+	{
+		if (other.name == "IceSlope")
+		{
+			animator.SetBool("BatmanSliding", false);
+			isDucked = false;
+			
+			transform.localScale = startScale;
+			body.transform.localScale = bodyStartScale;
+			
+			// Move location back to ground
+			Vector3 pos = transform.position;
+			Vector3	spritePos = body.transform.localPosition;
+			pos.y += duck / 2f;
+			spritePos.y = 0;
+			transform.position = pos;
+			body.transform.localPosition = spritePos;
+
+			sliding = false;
+			thisPeo.still = false;
+		}
 	}
 }

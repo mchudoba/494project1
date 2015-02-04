@@ -8,6 +8,7 @@ public class Gunman_Obj : MonoBehaviour
 	private bool			stood = false;
 	private bool			waited = false;
 	private float			duck = 0.66f;
+	private float			freezeTimer;
 	private Vector3			startScale;
 	private Vector3			spriteStartScale;
 	private PE_Obj			thisPeo;
@@ -35,6 +36,12 @@ public class Gunman_Obj : MonoBehaviour
 
 	void Update()
 	{
+		if (freezeTimer > 0)
+		{
+			freezeTimer -= Time.deltaTime;
+			return;
+		}
+
 		if (attackTimer > attackTimerVal)
 		{
 			attackTimer = 0;
@@ -123,5 +130,10 @@ public class Gunman_Obj : MonoBehaviour
 		spritePos.y = 0;
 		transform.position = pos;
 		spriteObj.transform.position = spritePos;
+	}
+
+	public void Freeze(float timerVal)
+	{
+		freezeTimer = timerVal;
 	}
 }

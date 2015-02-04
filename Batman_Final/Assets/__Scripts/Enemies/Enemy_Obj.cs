@@ -5,14 +5,17 @@ public class Enemy_Obj : MonoBehaviour
 {
 	private PE_Obj			thisPeo;
 	private GameObject		batmanObj;
+	private Animator		spriteAnimator;
 	private Color			startColor;
 	private float			velBeforeDamage;
 	private float			closeEnough = 1f;
 	private bool			takingDamage = false;
 	private bool			killedByPlayer = false;
+	private bool			despawnOnInvisible = true;
 
 	public GameObject		healthItem;
 	public GameObject		ammoItem;
+	public GameObject		sprite;
 	public int				health = 0;
 	public float			marchingSoldierSpeed = 7f;
 	public float			spikeRobotSpeed1 = 4f;
@@ -24,9 +27,13 @@ public class Enemy_Obj : MonoBehaviour
 
 	void Start()
 	{
+		if (Application.loadedLevelName == "_Custom_Level")
+			despawnOnInvisible = false;
+
 		thisPeo = GetComponent<PE_Obj>();
 		batmanObj = GameObject.Find("Batman");
-		startColor = gameObject.renderer.material.color;
+		startColor = sprite.renderer.material.color;
+		spriteAnimator = sprite.GetComponent<Animator>();
 
 		if (name.Contains("Marching Soldier"))
 		{
@@ -68,7 +75,8 @@ public class Enemy_Obj : MonoBehaviour
 		else if (takingDamage == true)
 		{
 			takingDamage = false;
-			gameObject.renderer.material.color = startColor;
+			sprite.renderer.material.color = startColor;
+			spriteAnimator.enabled = true;
 			thisPeo.vel.x = velBeforeDamage;
 		}
 
@@ -113,11 +121,12 @@ public class Enemy_Obj : MonoBehaviour
 		if (freezeTimer > 0) {
 			thisPeo.vel.x = 0;
 			freezeTimer -= Time.deltaTime;
-			if(gameObject.renderer.material.color != Color.red)
-				gameObject.renderer.material.color = Color.cyan;
-		} else if (gameObject.renderer.material.color == Color.cyan)
+			if(sprite.renderer.material.color != Color.red)
+				sprite.renderer.material.color = Color.cyan;
+		} else if (sprite.renderer.material.color == Color.cyan)
 		{
-			gameObject.renderer.material.color = startColor;
+			spriteAnimator.enabled = true;
+			sprite.renderer.material.color = startColor;
 			Start();
 		}
 
@@ -127,10 +136,11 @@ public class Enemy_Obj : MonoBehaviour
 
 	public void TakeDamage(int damage)
 	{
+		spriteAnimator.enabled = false;
 		takingDamage = true;
 		velBeforeDamage = thisPeo.vel.x;
 		thisPeo.vel.x = 0;
-		gameObject.renderer.material.color = Color.red;
+		sprite.renderer.material.color = Color.red;
 		damageTimer = damageTimerVal;
 		health -= damage;
 
@@ -138,13 +148,26 @@ public class Enemy_Obj : MonoBehaviour
 			killedByPlayer = true;
 	}
 
-	public void Freeze(){
+	public void Freeze()
+	{
+		spriteAnimator.enabled = false;
 		thisPeo.vel.x = 0;
 		freezeTimer = freezeTimerVal;
+		if (name.Contains("Flamethrower"))
+		{
+			GetComponent<Flamethrower_Obj>().Freeze(freezeTimerVal);
+		}
+		else if (name.Contains("Gunman"))
+		{
+			GetComponent<Gunman_Obj>().Freeze(freezeTimerVal);
+		}
 	}
 
 	void OnBecameInvisible()
 	{
+		if (!despawnOnInvisible)
+			return;
+
 		if (name.Contains("Flamethrower") || name.Contains("Gunman"))
 			return;
 
@@ -156,9 +179,9 @@ public class Enemy_Obj : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (!name.Contains("Spike Robot"))
+		if (!name.Contains("Spike Robot") && !name.Contains("Marching Soldier"))
 			return;
-		if (other.name != "SpikeRobotLimiter")
+		if (other.name != "Limiter")
 			return;
 
 		thisPeo.vel.x *= -1f;

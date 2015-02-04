@@ -19,6 +19,14 @@ public class FollowCam : MonoBehaviour
 		float cam_y = transform.position.y;
 
 		PE_Obj batmanPeo = batman.GetComponent<PE_Obj>();
+		if (batmanPeo.still)
+		{
+			cam_x = batman_x;
+			cam_y = batman_y;
+			transform.position = new Vector3(cam_x, cam_y, -10f);
+			return;
+		}
+
 		float cam_y_delta = Mathf.Abs(batmanPeo.pos1.y - batmanPeo.pos0.y);
 		float batman_delta = batman.transform.lossyScale.y / 2f;
 

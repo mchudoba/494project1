@@ -8,6 +8,7 @@ public class Flamethrower_Obj : MonoBehaviour
 	private SpriteRenderer	thisRenderer;
 	private Animator		thisAnimation;
 	private Animator		flameAnimation;
+	private float			freezeTimer;
 
 	public GameObject	flame;
 	public Sprite		stillSprite;
@@ -37,6 +38,16 @@ public class Flamethrower_Obj : MonoBehaviour
 			return;
 		}
 
+		if (freezeTimer > 0)
+		{
+			freezeTimer -= Time.deltaTime;
+			flameSprite.renderer.enabled = false;
+			flame.collider.enabled = false;
+			thisAnimation.enabled = false;
+			flameAnimation.enabled = false;
+			return;
+		}
+
 		flameTimer -= Time.deltaTime;
 		if (flameTimer < 0)
 		{
@@ -51,4 +62,8 @@ public class Flamethrower_Obj : MonoBehaviour
 			thisRenderer.sprite = stillSprite;
 	}
 
+	public void Freeze(float timerVal)
+	{
+		freezeTimer = timerVal;
+	}
 }

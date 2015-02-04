@@ -22,6 +22,9 @@ public class PE_Obj : MonoBehaviour
 
 	void Update()
 	{
+		if (tag == "Door" || tag == "Wall" || tag == "Ground")
+			return;
+
 		Quaternion rot = transform.rotation;
 		if (facing == PE_Facing.right)
 		{

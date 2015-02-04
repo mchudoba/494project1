@@ -3,14 +3,15 @@ using System.Collections;
 
 public class Door_Obj : MonoBehaviour
 {
-	public bool		opening = false;
-	public bool		closing = false;
-	public bool		frozen = false;
-	private bool		vertical;
+	private bool		opening = false;
+	private bool		closing = false;
+	private bool		frozen = false;
 	private Vector3		startingPos;
 	private Vector3		openPos;
 
+	public bool			vertical = true;
 	public float		speed = 20f;
+	public float		maxHeight = 15f;
 
 	public void Open()
 	{
@@ -26,18 +27,13 @@ public class Door_Obj : MonoBehaviour
 
 	void Start()
 	{
-		if (transform.rotation.z == 0)
-			vertical = true;
-		else
-			vertical = false;
-
 		startingPos = transform.position;
 		openPos = startingPos;
 
 		if (vertical)
-			openPos.y += transform.localScale.y;
+			openPos.y += maxHeight;
 		else
-			openPos.x -= transform.localScale.x;
+			openPos.x -= maxHeight;
 	}
 
 	void FixedUpdate()
