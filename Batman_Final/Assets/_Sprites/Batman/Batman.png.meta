@@ -66,6 +66,7 @@ TextureImporter:
     21300122: Batman_Air_Throw_2
     21300124: Batman_Air_Throw_3
     21300126: Batman_Air_Throw_4
+    21300128: Batman_Invisible
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -354,8 +355,8 @@ TextureImporter:
         y: 194
         width: 24
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .5, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Crouch_Punch_1
       rect:
@@ -364,8 +365,8 @@ TextureImporter:
         y: 194
         width: 32
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .379999995, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Crouch_Punch_2
       rect:
@@ -374,18 +375,18 @@ TextureImporter:
         y: 193
         width: 28
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .439999998, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Crouch_Punch_3
       rect:
         serializedVersion: 2
         x: 155
         y: 193
-        width: 23
+        width: 24
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .5, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Dead_1
       rect:
@@ -483,19 +484,19 @@ TextureImporter:
         x: 56
         y: 103
         width: 32
-        height: 31
-      alignment: 0
-      pivot: {x: .5, y: .5}
+        height: 32
+      alignment: 9
+      pivot: {x: .400000006, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Shoot_1
       rect:
         serializedVersion: 2
         x: 90
         y: 103
-        width: 29
+        width: 31
         height: 32
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .419999987, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Shoot_2
       rect:
@@ -504,18 +505,18 @@ TextureImporter:
         y: 103
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .400000006, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Shoot_3
       rect:
         serializedVersion: 2
         x: 155
         y: 103
-        width: 23
+        width: 32
         height: 32
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .400000006, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Throw_0
       rect:
@@ -573,19 +574,19 @@ TextureImporter:
         x: 53
         y: 64
         width: 32
-        height: 23
-      alignment: 0
-      pivot: {x: .5, y: .5}
+        height: 24
+      alignment: 9
+      pivot: {x: .400000006, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Crouch_Shoot_1
       rect:
         serializedVersion: 2
         x: 87
         y: 64
-        width: 29
+        width: 31
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .419999987, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Crouch_Shoot_2
       rect:
@@ -594,28 +595,28 @@ TextureImporter:
         y: 64
         width: 32
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .400000006, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Crouch_Shoot_3
       rect:
         serializedVersion: 2
         x: 152
         y: 64
-        width: 23
+        width: 32
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .400000006, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Crouch_Throw_0
       rect:
         serializedVersion: 2
         x: 195
         y: 63
-        width: 23
+        width: 24
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .5, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Crouch_Throw_1
       rect:
@@ -624,8 +625,8 @@ TextureImporter:
         y: 63
         width: 24
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .5, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Crouch_Throw_2
       rect:
@@ -634,8 +635,8 @@ TextureImporter:
         y: 63
         width: 32
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .379999995, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Crouch_Throw_3
       rect:
@@ -644,18 +645,18 @@ TextureImporter:
         y: 63
         width: 28
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .430000007, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Crouch_Throw_4
       rect:
         serializedVersion: 2
         x: 317
         y: 63
-        width: 23
+        width: 24
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .5, y: .660000026}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Batman_Air_Shoot_0
       rect:

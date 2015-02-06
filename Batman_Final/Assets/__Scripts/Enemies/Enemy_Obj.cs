@@ -6,12 +6,15 @@ public class Enemy_Obj : MonoBehaviour
 	private PE_Obj			thisPeo;
 	private GameObject		batmanObj;
 	private Animator		spriteAnimator;
+	private PE_Facing		facingBeforeFrozen;
+	private PE_Dir			dirBeforeFrozen;
 	private Color			startColor;
 	private float			velBeforeDamage;
 	private float			closeEnough = 1f;
 	private bool			takingDamage = false;
 	private bool			killedByPlayer = false;
 	private bool			despawnOnInvisible = true;
+	private bool			wasFrozen = false;
 
 	public GameObject		healthItem;
 	public GameObject		ammoItem;
@@ -49,6 +52,17 @@ public class Enemy_Obj : MonoBehaviour
 
 	void SetStartDirection()
 	{
+		if (wasFrozen)
+		{
+			thisPeo.facing = facingBeforeFrozen;
+			thisPeo.dir = dirBeforeFrozen;
+			wasFrozen = false;
+
+			if (facingBeforeFrozen == PE_Facing.left)
+				thisPeo.vel.x *= -1f;
+			return;
+		}
+
 		float batmanX = batmanObj.transform.position.x;
 		float thisX = transform.position.x;
 
@@ -152,6 +166,9 @@ public class Enemy_Obj : MonoBehaviour
 	{
 		spriteAnimator.enabled = false;
 		thisPeo.vel.x = 0;
+		facingBeforeFrozen = thisPeo.facing;
+		dirBeforeFrozen = thisPeo.dir;
+		wasFrozen = true;
 		freezeTimer = freezeTimerVal;
 		if (name.Contains("Flamethrower"))
 		{

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class FollowCam : MonoBehaviour
 {
+	private Batman_Obj		batmanObj;
+	private PE_Obj			batmanPeo;
 
 	public GameObject		batman;
 	public float			minY = 4f;
@@ -11,6 +13,12 @@ public class FollowCam : MonoBehaviour
 	public float			upperBound = 3f;
 	public float			lowerBound = -2f;
 
+	void Start()
+	{
+		batmanObj = batman.GetComponent<Batman_Obj>();
+		batmanPeo = batman.GetComponent<PE_Obj>();
+	}
+
 	void Update()
 	{
 		float batman_x = batman.transform.position.x;
@@ -18,8 +26,7 @@ public class FollowCam : MonoBehaviour
 		float cam_x = batman_x;
 		float cam_y = transform.position.y;
 
-		PE_Obj batmanPeo = batman.GetComponent<PE_Obj>();
-		if (batmanPeo.still)
+		if (batmanPeo.still && batmanObj.sliding)
 		{
 			cam_x = batman_x;
 			cam_y = batman_y;

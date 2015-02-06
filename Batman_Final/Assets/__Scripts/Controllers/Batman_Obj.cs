@@ -20,7 +20,8 @@ public class Batman_Obj : MonoBehaviour
 	private Vector3			startScale; // Local scale of Batman
 	private Vector3			bodyStartScale;
 	private Animator		animator;
-	private bool			sliding = false;
+	private bool			deadAnimation = false;
+	private float			gameOverTimer = 1.5f;
 
 	public int			health = 8;
 	public int			ammo = 0;
@@ -39,6 +40,7 @@ public class Batman_Obj : MonoBehaviour
 	public float		duck = 0.66f; // Percentage to shrink Batman to duck
 	public bool			GibsonMode = false; // GIBSON MODE: unlimited lives and ammo; invincible
 	public bool			collidingWithWall = false;
+	public bool			sliding = false;
 	public bool			wallOnLeft = true;
 	public bool			isWallJumping = false;
 	public bool			wallJumpTimerRunning = false;
@@ -98,8 +100,19 @@ public class Batman_Obj : MonoBehaviour
 
 		if (health <= 0)
 		{
-			animator.SetBool("BatmanDead", true);
-			GameController.GameOver();
+			body.renderer.material.color = startColor;
+			thisPeo.still = true;
+
+			if (!deadAnimation)
+			{
+				animator.Play("Batman_Dead");
+				deadAnimation = true;
+			}
+
+			gameOverTimer -= Time.deltaTime;
+
+			if (gameOverTimer < 0)
+				GameController.GameOver();
 			return;
 		}
 
@@ -403,7 +416,10 @@ public class Batman_Obj : MonoBehaviour
 			fist.collider.enabled = false;
 
 			animator.SetBool("BatmanWalking", false);
-			animator.Play("Batman_Punch", -1, 0f);
+			if (isDucked)
+				animator.Play("Batman_Crouch_Punch", -1, 0f);
+			else
+				animator.Play("Batman_Punch", -1, 0f);
 			fist.collider.enabled = true;
 			attackTimer = attackTimerVal;
 			if (grounded)
@@ -439,7 +455,10 @@ public class Batman_Obj : MonoBehaviour
 
 			// Animate the throw
 			animator.SetBool("BatmanWalking", false);
-			animator.Play("Batman_Throw", -1, 0f);
+			if (isDucked)
+				animator.Play ("Batman_Crouch_Throw", -1, 0f);
+			else
+				animator.Play("Batman_Throw", -1, 0f);
 		}
 	}
 
@@ -466,6 +485,13 @@ public class Batman_Obj : MonoBehaviour
 			Missile_Obj.count++;
 			
 			ammo -= 2;
+
+			// Animate the shooting
+			animator.SetBool("BatmanWalking", false);
+			if (isDucked)
+				animator.Play ("Batman_Crouch_Shoot", -1, 0f);
+			else
+				animator.Play ("Batman_Shoot", -1, 0f);
 		}
 	}
 
@@ -492,6 +518,13 @@ public class Batman_Obj : MonoBehaviour
 			Shuriken_Obj.count++;
 			
 			ammo -= 3;
+
+			// Animate the shooting
+			animator.SetBool("BatmanWalking", false);
+			if (isDucked)
+				animator.Play ("Batman_Crouch_Shoot", -1, 0f);
+			else
+				animator.Play ("Batman_Shoot", -1, 0f);
 		}
 	}
 
@@ -513,7 +546,10 @@ public class Batman_Obj : MonoBehaviour
 
 			// Animate the throw
 			animator.SetBool("BatmanWalking", false);
-			animator.Play("Batman_Throw", -1, 0f);
+			if (isDucked)
+				animator.Play ("Batman_Crouch_Throw", -1, 0f);
+			else
+				animator.Play("Batman_Throw", -1, 0f);
 		}
 	}
 
