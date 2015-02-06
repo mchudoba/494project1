@@ -522,9 +522,9 @@ public class Batman_Obj : MonoBehaviour
 			// Animate the shooting
 			animator.SetBool("BatmanWalking", false);
 			if (isDucked)
-				animator.Play ("Batman_Crouch_Shoot", -1, 0f);
+				animator.Play ("Batman_Crouch_Throw", -1, 0f);
 			else
-				animator.Play ("Batman_Shoot", -1, 0f);
+				animator.Play ("Batman_Throw", -1, 0f);
 		}
 	}
 

@@ -3,15 +3,18 @@ using System.Collections;
 
 public class Shuriken_Obj : MonoBehaviour
 {
-	public static int	count = 0;
+	public static int		count = 0;
 
-	private bool		resized = false;
-	private float		initialX = 0;
-	private PE_Obj		batman;
+	private bool			resized = false;
+	private float			initialX = 0;
+	private PE_Obj			batman;
+	private BoxCollider		thisCollider;
+	private SpriteRenderer	thisSprite;
 	
-	public float		xSpeed = 13f;
-	public float		changeDistance = 1f;
-	public int			damage = 10;
+	public float			xSpeed = 13f;
+	public float			changeDistance = 1f;
+	public int				damage = 10;
+	public Sprite			bigSprite;
 
 	void Start()
 	{
@@ -20,16 +23,19 @@ public class Shuriken_Obj : MonoBehaviour
 			xSpeed *= -1f;
 
 		initialX = transform.position.x;
+		thisCollider = GetComponent<BoxCollider>();
+		thisSprite = GetComponent<SpriteRenderer>();
 	}
 
 	void FixedUpdate()
 	{
 		if (Mathf.Abs(transform.position.x - initialX) >= changeDistance && !resized)
 		{
-			Vector3 newSize = transform.localScale;
+			Vector3 newSize = thisCollider.size;
 			newSize.y *= 3;
-			transform.localScale = newSize;
+			thisCollider.size = newSize;
 			resized = true;
+			thisSprite.sprite = bigSprite;
 		}
 
 		float dt = Time.fixedDeltaTime;
